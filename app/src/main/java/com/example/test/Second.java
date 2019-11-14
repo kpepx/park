@@ -22,8 +22,7 @@ import java.util.Map;
 
 public class Second extends Activity {
     public DatabaseReference data;
-    SharedPreferences sp;
-    SharedPreferences myID;
+    SharedPreferences sp,myID;
     public static final String PREFS_NAME = "Login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
