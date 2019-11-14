@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
 import java.util.Calendar;
 import android.app.AlarmManager;
-import android.content.Context;
 import android.os.SystemClock;
 import android.widget.Toast;
 
