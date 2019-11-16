@@ -41,7 +41,7 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".AlarmNotificationReceiver"/>
-
+        <receiver android:name=".AlertReceiver" />
         <service
             android:name=".MyService"
             android:enabled="true"
