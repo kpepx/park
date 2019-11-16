@@ -75,8 +75,8 @@ public class Notifications extends AppCompatActivity {
 
         // SET TIME HERE
         Calendar calendar= Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY,17);
-        calendar.set(Calendar.MINUTE,23);
+        calendar.set(Calendar.HOUR_OF_DAY,23);
+        calendar.set(Calendar.MINUTE,24);
 
         Toast.makeText(Notifications.this, "Yes", Toast.LENGTH_SHORT).show();
         myIntent = new Intent(Notifications.this,AlarmNotificationReceiver.class);

@@ -53,9 +53,11 @@ public class Second extends Activity {
                             if (dataSnapshot.exists()) {
                                 Map map = (Map) dataSnapshot.getValue();
                                 String value = String.valueOf(map.get("code"));
+                                String value_rfid = String.valueOf(map.get("rfid"));
                                 if (value.equals(valuecode)) {
                                     SharedPreferences.Editor editor = myID.edit();
                                     editor.putString("idKey", valueid);
+                                    editor.putString("rfid", value_rfid);
                                     editor.apply();
                                     editor.commit();
                                     goToMainpage();
