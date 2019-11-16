@@ -40,8 +40,8 @@ public class NotificationHelper extends ContextWrapper {
 
     public NotificationCompat.Builder getChannelNotification() {
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
-                .setContentTitle("Alarm!")
-                .setContentText("Your AlarmManager is working.")
+                .setContentTitle("ลานจอดรถกำลังจะปิด")
+                .setContentText("โปรดนำรถของท่านออกจากลานจอดรถก่อนเวลา 22.00")
                 .setSmallIcon(R.drawable.ic_launcher_background);
     }
 }
