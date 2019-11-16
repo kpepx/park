@@ -50,7 +50,6 @@ public class Third extends Activity {
                 Map map = (Map) dataSnapshot.getValue();
                 String value_status = String.valueOf(map.get("status"));
                 if(value_status.equals("in")){
-                    Toast.makeText(Third.this, "kuku", Toast.LENGTH_SHORT).show();
                     getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             new MapExample()).commit();
                 }
