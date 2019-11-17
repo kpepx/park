@@ -81,9 +81,11 @@ public class Notifications extends AppCompatActivity {
                         Map map = (Map) dataSnapshot.getValue();
                         int value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
                         int value_min = Integer.parseInt(String.valueOf(map.get("min")));
+                        String value_hour_txt = String.valueOf(map.get("hour"));
+                        String value_min_txt = String.valueOf(map.get("min"));
                         if(value_status.equals("in")){
-                            myPrefs.edit().putInt("hour",value_hour).apply();
-                            myPrefs.edit().putInt("min",value_min).apply();
+                            myPrefs.edit().putString("hour",value_hour_txt).apply();
+                            myPrefs.edit().putString("min",value_min_txt).apply();
                             Calendar c = Calendar.getInstance();
                             c.set(Calendar.HOUR_OF_DAY, value_hour-1);
                             c.set(Calendar.MINUTE, value_min);
