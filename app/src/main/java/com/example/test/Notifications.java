@@ -109,7 +109,6 @@ public class Notifications extends AppCompatActivity {
     private void updateTimeText(Calendar c) {
         String timeText = "Alarm set for: ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
-
         mTextView.setText(timeText);
     }
 

@@ -37,7 +37,6 @@ public class Third extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), Setting.class);
                 startActivity(i);
-                finish();
             }
         });
         myPrefs = getSharedPreferences("ID", 0);
