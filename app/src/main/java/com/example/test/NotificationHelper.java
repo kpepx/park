@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.SharedPreferences;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
@@ -39,9 +40,12 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     public NotificationCompat.Builder getChannelNotification() {
+//        SharedPreferences myPrefs = getSharedPreferences("ID", 0);
+//        String h = myPrefs.getString("hour","Default");
+//        String m = myPrefs.getString("min","Default");
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle("ลานจอดรถกำลังจะปิด")
-                .setContentText("โปรดนำรถของท่านออกจากลานจอดรถก่อนเวลา 22.00")
+                .setContentText("โปรดนำรถของท่านออกจากลานจอดรถก่อนเวลา")
                 .setSmallIcon(R.drawable.ic_launcher_background);
     }
 }

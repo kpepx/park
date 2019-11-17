@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.app.PendingIntent;
 import android.content.Context;
-import androidx.core.app.NotificationCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
 import java.util.Calendar;
@@ -14,23 +13,7 @@ import android.app.AlarmManager;
 import android.widget.Switch;
 import android.widget.CompoundButton;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TimePicker;
-
-import java.util.Calendar;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.app.TimePickerDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.app.DialogFragment;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.content.SharedPreferences;
 
 import com.google.firebase.database.DataSnapshot;
@@ -40,13 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Map;
 
 public class Notifications extends AppCompatActivity {
     public DatabaseReference data;
     SharedPreferences myPrefs;
-    public static final String PREFS = "state_sw";
     private TextView mTextView;
     Button buttonback4; //ปุ่มย้อนไปหน้าsetting
     @Override
@@ -67,36 +48,11 @@ public class Notifications extends AppCompatActivity {
             sw.setChecked(myPrefs.getBoolean("sw", true));
             onTimeSet();
         }
-
-        String rfid = myPrefs.getString("rfid","Default");
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        data = database.getReference().child("User").child(rfid);
-        Button buttonCancelAlarm = findViewById(R.id.button_cancel);
-        buttonCancelAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cancelAlarm();
-            }
-        });
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     myPrefs.edit().putBoolean("sw",true).apply();
-                    data.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            Map map = (Map) dataSnapshot.getValue();
-                            final String value_status = String.valueOf(map.get("status"));
-                            String value_place = String.valueOf(map.get("place"));
-                            myPrefs.edit().putString("place",value_place).apply();
-                            if(value_status.equals("in")){
-                                onTimeSet();
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                        }
-                    });
+                    onTimeSet();
                 }
                 else {
                     myPrefs.edit().putBoolean("sw",false).apply();
@@ -106,25 +62,45 @@ public class Notifications extends AppCompatActivity {
         });
     }
     public void onTimeSet() {
-        String place = myPrefs.getString("place","Default");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference data_place = database.getReference().child("Park").child(place).child("close");
-        data_place.addValueEventListener(new ValueEventListener() {
+        String rfid = myPrefs.getString("rfid","Default");
+        data = database.getReference().child("User").child(rfid);
+        data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map map = (Map) dataSnapshot.getValue();
-                int value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
-                int value_min = Integer.parseInt(String.valueOf(map.get("min")));
-                Calendar c = Calendar.getInstance();
-                c.set(Calendar.HOUR_OF_DAY, value_hour-1);
-                c.set(Calendar.MINUTE, value_min);
-                updateTimeText(c);
-                startAlarm(c);
+                final String value_status = String.valueOf(map.get("status"));
+                String value_place = String.valueOf(map.get("place"));
+                myPrefs.edit().putString("place",value_place).apply();
+                String place = myPrefs.getString("place","Default");
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference data_place = database.getReference().child("Park").child(place).child("close");
+                data_place.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Map map = (Map) dataSnapshot.getValue();
+                        int value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
+                        int value_min = Integer.parseInt(String.valueOf(map.get("min")));
+                        if(value_status.equals("in")){
+                            myPrefs.edit().putInt("hour",value_hour).apply();
+                            myPrefs.edit().putInt("min",value_min).apply();
+                            Calendar c = Calendar.getInstance();
+                            c.set(Calendar.HOUR_OF_DAY, value_hour-1);
+                            c.set(Calendar.MINUTE, value_min);
+                            c.set(Calendar.SECOND, -45);
+                            updateTimeText(c);
+                            startAlarm(c);
+                        }
+                        else {
+                            cancelAlarm();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {}
+                });
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
     }
 
