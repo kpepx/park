@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright">
+    android:background="@drawable/addbg">
 
     <TextView
         android:layout_width="wrap_content"
@@ -9,8 +9,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="319dp"
-        android:layout_marginEnd="132dp"
-        android:text="add fragment"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="55dp"
+        android:fontFamily="@font/monsemibold"
+        android:text="Add your favourite"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp" />
 </RelativeLayout>
