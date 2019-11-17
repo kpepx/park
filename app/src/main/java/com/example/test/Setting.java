@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 public class Setting extends Activity {
     public static final String PREFS_NAME = "Login";
-    SharedPreferences sp;
+    SharedPreferences sp,myPrefs;
     Button buttonback;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,13 +55,13 @@ public class Setting extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Setting.this,Third.class));
-                finish();
             }
         });
         Button logout = (Button) findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myPrefs = getSharedPreferences("ID", 0);
                 sp = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.remove("logged").apply();
@@ -69,7 +69,8 @@ public class Setting extends Activity {
                 Toast.makeText(Setting.this, "Logout", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Setting.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+                myPrefs.edit().putBoolean("sw",false).apply();
+                myPrefs.edit().putBoolean("togglebutton",false).apply();
             }
         });
     }

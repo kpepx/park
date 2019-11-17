@@ -22,7 +22,6 @@ public class Notifications extends AppCompatActivity {
     public static String MY_PREFS_NAME= "nameOfSharedPreferences";
     Button buttonback4; //ปุ่มย้อนไปหน้าsetting
     Button show;
-    Button bb;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

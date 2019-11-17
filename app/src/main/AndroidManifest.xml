@@ -41,11 +41,10 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".AlarmNotificationReceiver"/>
-
+        <receiver android:name=".AlertReceiver" />
         <service
-            android:name=".MyService"
-            android:enabled="true"
-            android:exported="true"></service>
+            android:name=".RSSPullService"
+            android:exported="false"/>
     </application>
 
 </manifest>
