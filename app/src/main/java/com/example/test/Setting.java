@@ -48,6 +48,7 @@ public class Setting extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), Notifications.class);
                 startActivity(i);
+                finish();
             }
         });
         buttonback = findViewById(R.id.buttonback); //ปุ่มย้อนกลับไปหน้าmap
