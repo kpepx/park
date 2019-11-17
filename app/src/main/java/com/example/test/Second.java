@@ -61,6 +61,7 @@ public class Second extends Activity {
                                     editor.apply();
                                     editor.commit();
                                     goToMainpage();
+                                    finish();
                                     sp.edit().putBoolean("logged",true).apply();
                                     Toast.makeText(Second.this, "Sucessfull", Toast.LENGTH_SHORT).show();
                                 } else {

@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 public class Setting extends Activity {
     public static final String PREFS_NAME = "Login";
     SharedPreferences sp;
+    Button buttonback;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,14 @@ public class Setting extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), Notifications.class);
                 startActivity(i);
+            }
+        });
+        buttonback = findViewById(R.id.buttonback); //ปุ่มย้อนกลับไปหน้าmap
+        buttonback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Setting.this,Third.class));
+                finish();
             }
         });
         Button logout = (Button) findViewById(R.id.logout);

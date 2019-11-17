@@ -40,12 +40,12 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     public NotificationCompat.Builder getChannelNotification() {
-//        SharedPreferences myPrefs = getSharedPreferences("ID", 0);
-//        String h = myPrefs.getString("hour","Default");
-//        String m = myPrefs.getString("min","Default");
+        SharedPreferences myPrefs = getSharedPreferences("ID", 0);
+        String h = myPrefs.getString("hour","Default");
+        String m = myPrefs.getString("min","Default");
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle("ลานจอดรถกำลังจะปิด")
-                .setContentText("โปรดนำรถของท่านออกจากลานจอดรถก่อนเวลา")
+                .setContentText("โปรดนำรถของท่านออกจากลานจอดรถก่อนเวลา "+h+":"+m+" น.")
                 .setSmallIcon(R.drawable.ic_launcher_background);
     }
 }
