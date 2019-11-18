@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -79,18 +80,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.252" />
 
-    <Button
-        android:id="@+id/buttonback"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.117" />
 
     <ImageView
         android:id="@+id/accounticon"
@@ -165,7 +154,7 @@
         android:layout_marginStart="16dp"
         android:adjustViewBounds="true"
         android:fontFamily="@font/alithin"
-        android:text="@string/account"
+        android:text="Account"
         android:textColor="#5E5C5C"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -183,7 +172,7 @@
         android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:fontFamily="@font/alithin"
-        android:text="@string/about"
+        android:text="About"
         android:textColor="#5E5C5C"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -200,7 +189,7 @@
         android:layout_marginStart="16dp"
         android:adjustViewBounds="true"
         android:fontFamily="@font/alithin"
-        android:text="@string/display"
+        android:text="Display"
         android:textColor="#5E5C5C"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -217,7 +206,7 @@
         android:layout_marginStart="16dp"
         android:adjustViewBounds="true"
         android:fontFamily="@font/alithin"
-        android:text="@string/notifications"
+        android:text="Notifications"
         android:textColor="#5E5C5C"
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -227,6 +216,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.718" />
 
+
     <Button
         android:id="@+id/logout"
         style="?android:attr/borderlessButtonStyle"
@@ -235,14 +225,14 @@
         android:adjustViewBounds="true"
         android:background="@drawable/logout"
         android:fontFamily="@font/alireg"
-        android:text="@string/log_out"
+        android:text="LOG OUT"
         android:textColor="#ffff"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82" />
+        app:layout_constraintVertical_bias="0.842" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
