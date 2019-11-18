@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.app.PendingIntent;
 import android.content.Context;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.Nullable;
 import java.util.Calendar;
 import android.app.AlarmManager;
 import android.widget.Switch;
