@@ -16,14 +16,13 @@ public class Setting extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.setting_page);
+        setContentView(R.layout.fragment_setting);
         Button button = (Button)findViewById(R.id.account); //ปุ่มไปหน้าaccount
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Account.class);
                 startActivity(i);
-
             }
         });
         Button buttonAbout = (Button)findViewById(R.id.about); //ปุ่มไปหน้าabout

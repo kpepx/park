@@ -2,7 +2,9 @@ package com.example.test;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -13,6 +15,8 @@ import android.app.AlarmManager;
 import android.widget.Switch;
 import android.widget.CompoundButton;
 import androidx.annotation.NonNull;
+import android.app.Fragment;
+
 import android.widget.TextView;
 import android.content.SharedPreferences;
 
@@ -25,25 +29,25 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormat;
 import java.util.Map;
 
-public class Notifications extends AppCompatActivity {
+public class Notifications extends Fragment {
     public DatabaseReference data;
     SharedPreferences myPrefs;
     private TextView mTextView;
     Button buttonback4; //ปุ่มย้อนไปหน้าsetting
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.notifications_page);
-        buttonback4 = findViewById(R.id.buttonback4); //ปุ่มย้อนไปหน้าsetting
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.notifications_page, container, false);
+        buttonback4 = view.findViewById(R.id.buttonback4); //ปุ่มย้อนไปหน้าsetting
         buttonback4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Notifications.this,Setting.class));
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SettingFragment()).commit();
             }
         });
-        mTextView = findViewById(R.id.textView);
-        myPrefs = getSharedPreferences("ID", 0);
-        Switch sw = (Switch) findViewById(R.id.swbutton);
+        mTextView = view.findViewById(R.id.textView);
+        myPrefs = this.getActivity().getSharedPreferences("ID", 0);
+        Switch sw = (Switch) view.findViewById(R.id.swbutton);
         if(myPrefs.getBoolean("sw", true)){
             sw.setChecked(myPrefs.getBoolean("sw", true));
             onTimeSet();
@@ -60,6 +64,7 @@ public class Notifications extends AppCompatActivity {
                 }
             }
         });
+        return view;
     }
     public void onTimeSet() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -113,9 +118,9 @@ public class Notifications extends AppCompatActivity {
     }
 
     private void startAlarm(Calendar c) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getActivity().getApplication(), AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplication(), 1, intent, 0);
 
         if (c.before(Calendar.getInstance())) {
             c.add(Calendar.DATE, 1);
@@ -125,9 +130,9 @@ public class Notifications extends AppCompatActivity {
     }
 
     private void cancelAlarm() {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getActivity().getApplication(), AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplication(), 1, intent, 0);
 
         alarmManager.cancel(pendingIntent);
         mTextView.setText("Alarm canceled");

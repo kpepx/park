@@ -16,12 +16,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+
+import android.app.FragmentTransaction;
 import android.app.Fragment;
 
 import java.util.Map;
 
 
-public class Third extends Activity {
+public class Third extends FragmentActivity {
     public DatabaseReference data;
     SharedPreferences myPrefs;
     @Override
@@ -49,6 +53,11 @@ public class Third extends Activity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+//        //Todo:Load Fragment//
+//        Fragment fragmentLoginActivity = new SettingFragment();
+//        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//        fragmentTransaction.add(R.id.fragment_container, fragmentLoginActivity);
+//        fragmentTransaction.commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener NavListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -17,4 +17,5 @@ public class MapExample extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.map_example,container,false);
     }
+
 }
