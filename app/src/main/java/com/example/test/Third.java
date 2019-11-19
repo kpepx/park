@@ -3,6 +3,8 @@ package com.example.test;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +27,7 @@ public class Third extends FragmentActivity {
         setContentView(R.layout.third_page);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(NavListener);
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit(); // setให้เปิดมาละเป็นหน้าhome
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit(); // setให้เปิดมาละเป็นหน้าhome
         myPrefs = getSharedPreferences("ID", 0);
         String rfid = myPrefs.getString("rfid","Default");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -52,7 +54,7 @@ public class Third extends FragmentActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()){
                         case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
+                            selectedFragment = new MapFragment();
                             break;
                         case R.id.nav_fav:
                             selectedFragment = new FavFragment();
