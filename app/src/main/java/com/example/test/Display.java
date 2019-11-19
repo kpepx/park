@@ -42,7 +42,6 @@ public class Display extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    Toast.makeText(getActivity().getApplication(), "Nothing selected", Toast.LENGTH_SHORT).show();
                     myPrefs.edit().putBoolean("togglebutton",true).apply();
                 }
                 else {

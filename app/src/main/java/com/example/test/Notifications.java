@@ -84,11 +84,7 @@ public class Notifications extends Fragment {
                         Map map = (Map) dataSnapshot.getValue();
                         int value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
                         int value_min = Integer.parseInt(String.valueOf(map.get("min")));
-                        String value_hour_txt = String.valueOf(map.get("hour"));
-                        String value_min_txt = String.valueOf(map.get("min"));
                         if(value_status.equals("in")){
-                            myPrefs.edit().putString("hour",value_hour_txt).apply();
-                            myPrefs.edit().putString("min",value_min_txt).apply();
                             Calendar c = Calendar.getInstance();
                             c.set(Calendar.HOUR_OF_DAY, value_hour-1);
                             c.set(Calendar.MINUTE, value_min);
@@ -112,11 +108,12 @@ public class Notifications extends Fragment {
     private void updateTimeText(Calendar c) {
         String timeText = "Alarm set for: ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+        myPrefs.edit().putString("time",DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime())).apply();
         mTextView.setText(timeText);
     }
 
     private void startAlarm(Calendar c) {
-        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getActivity().getApplication().getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(getActivity().getApplication(), AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplication(), 1, intent, 0);
 
@@ -127,7 +124,7 @@ public class Notifications extends Fragment {
     }
 
     private void cancelAlarm() {
-        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getActivity().getApplication().getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(getActivity().getApplication(), AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplication(), 1, intent, 0);
 
