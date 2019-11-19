@@ -23,6 +23,7 @@
 
     <ImageView
         android:id="@+id/notifications"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="350dp"
         android:layout_height="89dp"
         android:layout_centerInParent="true"
@@ -35,17 +36,17 @@
 
     <Switch
         android:id="@+id/swbutton"
-        android:layout_width="54dp"
-        android:layout_height="39dp"
+        android:layout_width="49dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
+        app:layout_constraintVertical_bias="0.711" />
 
     <Button
         android:id="@+id/display"
@@ -92,7 +93,6 @@
         android:id="@+id/accounticon"
         android:layout_width="27dp"
         android:layout_height="27dp"
-        android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:background="@drawable/acicon"
         android:contentDescription="@string/todo"
@@ -101,7 +101,7 @@
         app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277"
+        app:layout_constraintVertical_bias="0.271"
         tools:targetApi="donut" />
 
     <ImageView
@@ -169,7 +169,6 @@
         android:id="@+id/abouttext"
         android:layout_width="141dp"
         android:layout_height="33dp"
-        android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:fontFamily="@font/alithin"
         android:text="@string/about"
@@ -180,7 +179,7 @@
         app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintVertical_bias="0.413" />
 
     <TextView
         android:id="@+id/displaytext"
@@ -230,6 +229,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.832" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
