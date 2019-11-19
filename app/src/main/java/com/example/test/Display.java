@@ -48,7 +48,30 @@ public class Display extends Fragment {
         RadioButton red = (RadioButton) view.findViewById(R.id.red);
         RadioButton green = (RadioButton) view.findViewById(R.id.green);
         RadioButton all = (RadioButton) view.findViewById(R.id.all);
-        red.setOnClickListener(new View.OnClickListener() {
+        red.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    myPrefs.edit().putBoolean("togglebutton",true).apply();
+                }
+                else {
+                    myPrefs.edit().putBoolean("togglebutton",false).apply();
+                }
+            }
+        });
+//        red.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getActivity().getApplication(), "Try Again", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        green.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity().getApplication(), "Try Again", Toast.LENGTH_SHORT).show();
+            }
+        });
+        all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity().getApplication(), "Try Again", Toast.LENGTH_SHORT).show();
