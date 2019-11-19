@@ -54,9 +54,6 @@ public class Third extends FragmentActivity {
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
                             break;
-                        case R.id.nav_add:
-                            selectedFragment = new AddFragment();
-                            break;
                         case R.id.nav_fav:
                             selectedFragment = new FavFragment();
                             break;

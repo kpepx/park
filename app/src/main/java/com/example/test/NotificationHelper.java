@@ -46,6 +46,6 @@ public class NotificationHelper extends ContextWrapper {
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle("ลานจอดรถกำลังจะปิด")
                 .setContentText("โปรดนำรถของท่านออกจากลานจอดรถก่อนเวลา "+h+":"+m+" น.")
-                .setSmallIcon(R.drawable.ic_launcher_background);
+                .setSmallIcon(R.drawable.logo);
     }
 }
