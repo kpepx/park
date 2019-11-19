@@ -40,39 +40,39 @@ public class MapExample extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map map = (Map) dataSnapshot.getValue();
                 String value_place = String.valueOf(map.get("place"));
-                myPrefs.edit().putString("place",value_place).apply();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-        String place = myPrefs.getString("place","Default");
-        data = database.getReference().child("Park").child(place);
-        data.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Map map = (Map) dataSnapshot.getValue();
-                String value_name = String.valueOf(map.get("name"));
-                name.setText(value_name);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-        data = database.getReference().child("Park").child(place).child("Carln");
-        data.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Map map = (Map) dataSnapshot.getValue();
-                String car1 = String.valueOf(map.get("car_1"));
-                String car2 = String.valueOf(map.get("car_2"));
-                String car3 = String.valueOf(map.get("car_3"));
-                if(car1.equals("1")){image_1.setImageResource(R.drawable.red);}
-                else {image_1.setImageResource(R.drawable.green);}
-                if(car2.equals("1")){image_2.setImageResource(R.drawable.red);}
-                else {image_2.setImageResource(R.drawable.green);}
-                if(car3.equals("1")){image_3.setImageResource(R.drawable.red);}
-                else {image_3.setImageResource(R.drawable.green); }
+//                myPrefs.edit().putString("place",value_place).apply();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                data = database.getReference().child("Park").child(value_place);
+                data.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Map map = (Map) dataSnapshot.getValue();
+                        String value_name = String.valueOf(map.get("name"));
+                        name.setText(value_name);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+                data = database.getReference().child("Park").child(value_place).child("CarIn");
+                data.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Map map = (Map) dataSnapshot.getValue();
+                        String car1 = String.valueOf(map.get("car_1"));
+                        String car2 = String.valueOf(map.get("car_2"));
+                        String car3 = String.valueOf(map.get("car_3"));
+                        if(car1.equals("1")){image_1.setImageResource(R.drawable.red);}
+                        else {image_1.setImageResource(R.drawable.green);}
+                        if(car2.equals("1")){image_2.setImageResource(R.drawable.red);}
+                        else {image_2.setImageResource(R.drawable.green);}
+                        if(car3.equals("1")){image_3.setImageResource(R.drawable.red);}
+                        else {image_3.setImageResource(R.drawable.green);}
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
