@@ -41,19 +41,12 @@ public class SettingFragment extends Fragment{
                         new Display()).commit();
             }
         });
-        Button notifications = (Button)view.findViewById(R.id.notifications);
-        notifications.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Notifications()).commit();
-            }
-        });
         Button logout = (Button)view.findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 myPrefs = getActivity().getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor = myPrefs.edit();
-                editor.remove("logged").apply();
+                editor.clear().apply();
                 editor.commit();
                 Toast.makeText(getActivity().getApplication(), "Logout", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity().getApplication(), MainActivity.class);

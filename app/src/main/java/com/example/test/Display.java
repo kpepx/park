@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 import android.widget.RadioButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -16,8 +15,6 @@ import android.app.Fragment;
 
 public class Display extends Fragment {
     SharedPreferences myPrefs;
-    RadioButton genderradioButton;
-    RadioGroup  radioGroup;
     Button buttonback3;//ปุ่มย้อนไปหน้าsetting
     @Nullable
     @Override
@@ -28,7 +25,7 @@ public class Display extends Fragment {
         if(myPrefs.getBoolean("togglebutton", false)){
             togglebutton.setChecked(myPrefs.getBoolean("togglebutton", false));
         }
-        radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
+
         buttonback3 = view.findViewById(R.id.buttonback3); //ปุ่มย้อนไปหน้าsetting
         buttonback3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,17 +45,17 @@ public class Display extends Fragment {
                 }
             }
         });
+        RadioButton red = (RadioButton) view.findViewById(R.id.red);
+        RadioButton green = (RadioButton) view.findViewById(R.id.green);
+        RadioButton all = (RadioButton) view.findViewById(R.id.all);
+        red.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity().getApplication(), "Try Again", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         return view;
     }
-
-//    public void onclickbuttonMethod(View v) {
-//        int selectedId = radioGroup.getCheckedRadioButtonId();
-//        genderradioButton = (RadioButton) findViewById(selectedId);
-//        if (selectedId == -1) {
-//            Toast.makeText(Display.this, "Nothing selected", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(Display.this, genderradioButton.getText(), Toast.LENGTH_SHORT).show();
-//        }
-//
-//    }
 }

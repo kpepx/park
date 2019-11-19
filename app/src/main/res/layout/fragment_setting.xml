@@ -6,23 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/displaybg">
+
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="208dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:adjustViewBounds="true"
+        android:id="@+id/textView1"
+        android:layout_width="267dp"
+        android:layout_height="50dp"
         android:fontFamily="@font/monsemibold"
         android:text="@string/Settings"
-        android:textColor="#000"
-        android:textSize="45sp"
+        android:textColor="#000000"
+        android:textSize="37sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.12" />
+
 
     <Button
         android:id="@+id/notifications"
