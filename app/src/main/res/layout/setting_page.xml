@@ -27,7 +27,7 @@
         android:layout_width="350dp"
         android:layout_height="89dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/setbox"
+        android:background="@drawable/displaybox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -72,82 +72,75 @@
         android:background="@drawable/setbox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.252" />
+        app:layout_constraintVertical_bias="0.248" />
 
     <ImageView
         android:id="@+id/accounticon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="44dp"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:background="@drawable/acicon"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.288"
+        app:layout_constraintVertical_bias="0.277"
         tools:targetApi="donut" />
 
     <ImageView
         android:id="@+id/seticon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:adjustViewBounds="true"
         android:background="@drawable/seticon"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437"
+        app:layout_constraintVertical_bias="0.418"
         tools:targetApi="donut" />
 
     <ImageView
         android:id="@+id/displayimage"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="44dp"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:adjustViewBounds="true"
         android:background="@drawable/displayicon"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56"
+        app:layout_constraintVertical_bias="0.555"
         tools:targetApi="donut" />
 
     <ImageView
         android:id="@+id/notification"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="44dp"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
         android:adjustViewBounds="true"
         android:background="@drawable/notiicon"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.711"
+        app:layout_constraintVertical_bias="0.705"
         tools:targetApi="donut" />
 
     <TextView
         android:id="@+id/accounttext"
-        android:layout_width="167dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="158dp"
+        android:layout_height="34dp"
         android:adjustViewBounds="true"
         android:fontFamily="@font/alithin"
         android:text="@string/account"
@@ -155,16 +148,15 @@
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.346"
+        app:layout_constraintHorizontal_bias="0.316"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.286" />
+        app:layout_constraintVertical_bias="0.263" />
 
     <TextView
         android:id="@+id/abouttext"
-        android:layout_width="158dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="141dp"
+        android:layout_height="33dp"
         android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:fontFamily="@font/alithin"
@@ -173,16 +165,15 @@
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442" />
+        app:layout_constraintVertical_bias="0.423" />
 
     <TextView
         android:id="@+id/displaytext"
-        android:layout_width="158dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="148dp"
+        android:layout_height="34dp"
         android:adjustViewBounds="true"
         android:fontFamily="@font/alithin"
         android:text="@string/display"
@@ -190,16 +181,15 @@
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.301"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.566" />
+        app:layout_constraintVertical_bias="0.551" />
 
     <TextView
         android:id="@+id/notitext"
-        android:layout_width="158dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="148dp"
+        android:layout_height="32dp"
         android:adjustViewBounds="true"
         android:fontFamily="@font/alithin"
         android:text="@string/notifications"
@@ -207,10 +197,10 @@
         android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.301"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718" />
+        app:layout_constraintVertical_bias="0.703" />
 
     <Button
         android:id="@+id/logout"

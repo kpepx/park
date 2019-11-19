@@ -39,33 +39,29 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="30dp"
         android:background="@drawable/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.129" />
 
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="253dp"
-        android:layout_marginTop="30dp"
+        android:id="@+id/textView1"
+        android:layout_width="267dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:fontFamily="@font/monsemibold"
         android:text="@string/display"
         android:textColor="#000000"
-        android:textSize="40sp"
+        android:textSize="37sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.246"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintVertical_bias="0.12" />
 
 
     <TextView
@@ -78,26 +74,25 @@
         android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.288" />
+        app:layout_constraintVertical_bias="0.301" />
 
     <ToggleButton
         android:id="@+id/toggleButton"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="150dp"
         android:layout_height="125dp"
-        android:layout_marginTop="156dp"
         android:background="@drawable/modetoggle"
         android:textOff=""
         android:textOn=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.262" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -107,9 +102,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.819"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.522">
 
         <TextView
             android:id="@+id/textView3"
