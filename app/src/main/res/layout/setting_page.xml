@@ -23,6 +23,7 @@
 
     <ImageView
         android:id="@+id/notifications"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="350dp"
         android:layout_height="89dp"
         android:layout_centerInParent="true"
