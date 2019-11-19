@@ -31,18 +31,9 @@ public class Notifications extends Fragment {
     public DatabaseReference data;
     SharedPreferences myPrefs;
     private TextView mTextView;
-    Button buttonback4; //ปุ่มย้อนไปหน้าsetting
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notifications_page, container, false);
-        buttonback4 = view.findViewById(R.id.buttonback4); //ปุ่มย้อนไปหน้าsetting
-        buttonback4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SettingFragment()).commit();
-            }
-        });
         mTextView = view.findViewById(R.id.textView);
         myPrefs = this.getActivity().getSharedPreferences("ID", 0);
         Switch sw = (Switch) view.findViewById(R.id.swbutton);

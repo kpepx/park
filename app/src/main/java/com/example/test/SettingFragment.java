@@ -41,13 +41,6 @@ public class SettingFragment extends Fragment{
                         new Display()).commit();
             }
         });
-        Button notifications = (Button)view.findViewById(R.id.notifications);
-        notifications.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Notifications()).commit();
-            }
-        });
         Button logout = (Button)view.findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
