@@ -15,9 +15,10 @@ import androidx.annotation.Nullable;
 import android.app.Fragment;
 
 public class Display extends Fragment {
+    public static final String PREFS_NAME = "Login";
     SharedPreferences myPrefs;
     RadioButton genderradioButton;
-    RadioGroup  radioGroup;
+    RadioGroup radioGroup;
     Button buttonback3;//ปุ่มย้อนไปหน้าsetting
     @Nullable
     @Override
@@ -41,6 +42,7 @@ public class Display extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+                    Toast.makeText(getActivity().getApplication(), "Nothing selected", Toast.LENGTH_SHORT).show();
                     myPrefs.edit().putBoolean("togglebutton",true).apply();
                 }
                 else {

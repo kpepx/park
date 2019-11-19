@@ -30,15 +30,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCdkHxVa0ARy3OgW8eXk7aE2JRetWTu1l8"/>
-        <receiver android:name=".BootReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
 
-                <category android:name="android.intent.category.HOME" />
-            </intent-filter>
-        </receiver>
         <receiver android:name=".AlarmNotificationReceiver"/>
         <receiver android:name=".AlertReceiver" />
     </application>

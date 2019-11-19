@@ -74,10 +74,10 @@ public class Notifications extends Fragment {
                 Map map = (Map) dataSnapshot.getValue();
                 final String value_status = String.valueOf(map.get("status"));
                 String value_place = String.valueOf(map.get("place"));
-//                myPrefs.edit().putString("place",value_place).apply();
-//                String place = myPrefs.getString("place","Default");
+                myPrefs.edit().putString("place",value_place).apply();
+                String place = myPrefs.getString("place","Default");
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference data_place = database.getReference().child("Park").child(value_place).child("close");
+                DatabaseReference data_place = database.getReference().child("Park").child(place).child("close");
                 data_place.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -92,6 +92,7 @@ public class Notifications extends Fragment {
                             Calendar c = Calendar.getInstance();
                             c.set(Calendar.HOUR_OF_DAY, value_hour-1);
                             c.set(Calendar.MINUTE, value_min);
+                            c.set(Calendar.SECOND, 0);
                             updateTimeText(c);
                             startAlarm(c);
                         }
@@ -122,7 +123,6 @@ public class Notifications extends Fragment {
         if (c.before(Calendar.getInstance())) {
             c.add(Calendar.DATE, 1);
         }
-
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
     }
 

@@ -53,7 +53,7 @@ public class SettingFragment extends Fragment{
             public void onClick(View v) {
                 myPrefs = getActivity().getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor = myPrefs.edit();
-                editor.remove("logged").apply();
+                editor.clear().apply();
                 editor.commit();
                 Toast.makeText(getActivity().getApplication(), "Logout", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity().getApplication(), MainActivity.class);

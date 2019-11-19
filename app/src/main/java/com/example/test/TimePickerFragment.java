@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 
 public class TimePickerFragment extends DialogFragment {
-
+    public TimePickerFragment(){}
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
