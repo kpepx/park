@@ -14,7 +14,15 @@ public class Add extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.add,container,false);
+        View view = inflater.inflate(R.layout.add,container,false);
+        Button complete= (Button)view.findViewById(R.id.completebutton);
+        complete.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new FavFragment()).commit();
+            }
+        });
+        return view;
     }
 }
 
