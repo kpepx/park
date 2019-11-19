@@ -37,19 +37,12 @@ public class MapFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map_fragment, container, false);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkUserLocationPermission();
-        }
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         //SupportMapFragment mapFragment = SupportMapFragment.newInstance().getSupportFragmentManager()
          //       .findFragmentById(R.id.map);
         //mapFragment.getMapAsync(this);
 
         return view;
-    }
-
-    private void checkUserLocationPermission() {
     }
 
     @Override
