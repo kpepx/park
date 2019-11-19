@@ -23,7 +23,6 @@
         </activity>
         <activity android:name="Second"></activity>
         <activity android:name="Third"></activity>
-        <activity android:name="Setting"></activity>
         <activity android:name="Account"></activity>
         <activity android:name="About"></activity>
         <activity android:name="Display"></activity>
@@ -42,9 +41,6 @@
         </receiver>
         <receiver android:name=".AlarmNotificationReceiver"/>
         <receiver android:name=".AlertReceiver" />
-        <service
-            android:name=".RSSPullService"
-            android:exported="false"/>
     </application>
 
 </manifest>

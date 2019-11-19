@@ -2,92 +2,136 @@ package com.example.test;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
-import androidx.core.app.NotificationCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.Nullable;
 import java.util.Calendar;
 import android.app.AlarmManager;
-import android.os.SystemClock;
-import android.widget.Toast;
+import android.widget.Switch;
+import android.widget.CompoundButton;
+import androidx.annotation.NonNull;
+import android.app.Fragment;
 
-public class Notifications extends AppCompatActivity {
-    public static final String NOTIFICATION_CHANNEL_ID = "10001" ;
-    private final static String default_notification_channel_id = "default" ;
-    public static String MY_PREFS_NAME= "nameOfSharedPreferences";
+import android.widget.TextView;
+import android.content.SharedPreferences;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.DateFormat;
+import java.util.Map;
+
+public class Notifications extends Fragment {
+    public DatabaseReference data;
+    SharedPreferences myPrefs;
+    private TextView mTextView;
     Button buttonback4; //ปุ่มย้อนไปหน้าsetting
-    Button show;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.notifications_page);
-        buttonback4 = findViewById(R.id.buttonback4); //ปุ่มย้อนไปหน้าsetting
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.notifications_page, container, false);
+        buttonback4 = view.findViewById(R.id.buttonback4); //ปุ่มย้อนไปหน้าsetting
         buttonback4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Notifications.this,Setting.class));
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SettingFragment()).commit();
             }
         });
-        Button btnCreateNotification = findViewById(R.id. btnCreateNotification ) ;
-        btnCreateNotification.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick (View v) {
-                Intent notificationIntent = new Intent(Notifications.this,
-                        Second.class ) ;
-                notificationIntent.setFlags(Intent. FLAG_ACTIVITY_CLEAR_TOP | Intent. FLAG_ACTIVITY_SINGLE_TOP );
-                PendingIntent resultIntent = PendingIntent. getActivity (Notifications. this, 0 , notificationIntent , 0 );
-                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(Notifications. this, default_notification_channel_id )
-                        .setSmallIcon(R.drawable. ic_launcher_foreground )
-                        .setContentTitle( "Test" )
-                        .setContentIntent(resultIntent)
-                        .setStyle( new NotificationCompat.InboxStyle())
-                        .setContentText( "Hello! This is my first push notification" ) ;
-                NotificationManager mNotificationManager = (NotificationManager)getSystemService(Context. NOTIFICATION_SERVICE );
-                if (android.os.Build.VERSION. SDK_INT >=android.os.Build.VERSION_CODES. O ) {
-                    int importance = NotificationManager. IMPORTANCE_HIGH ;
-                    NotificationChannel notificationChannel = new NotificationChannel( NOTIFICATION_CHANNEL_ID , "NOTIFICATION_CHANNEL_NAME" , importance) ;
-                    mBuilder.setChannelId( NOTIFICATION_CHANNEL_ID ) ;
-                    assert mNotificationManager != null;
-                    mNotificationManager.createNotificationChannel(notificationChannel) ;
+        mTextView = view.findViewById(R.id.textView);
+        myPrefs = this.getActivity().getSharedPreferences("ID", 0);
+        Switch sw = (Switch) view.findViewById(R.id.swbutton);
+        if(myPrefs.getBoolean("sw", true)){
+            sw.setChecked(myPrefs.getBoolean("sw", true));
+            onTimeSet();
+        }
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    myPrefs.edit().putBoolean("sw",true).apply();
+                    onTimeSet();
                 }
-                assert mNotificationManager != null;
-                mNotificationManager.notify(( int ) System. currentTimeMillis () ,
-                        mBuilder.build()) ;
+                else {
+                    myPrefs.edit().putBoolean("sw",false).apply();
+                    cancelAlarm();
+                }
             }
         });
-        show = (Button)findViewById(R.id.btn_show);
-        show.setOnClickListener(new View.OnClickListener() {
+        return view;
+    }
+    public void onTimeSet() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String rfid = myPrefs.getString("rfid","Default");
+        data = database.getReference().child("User").child(rfid);
+        data.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                startAlarm(true,true);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Map map = (Map) dataSnapshot.getValue();
+                final String value_status = String.valueOf(map.get("status"));
+                String value_place = String.valueOf(map.get("place"));
+//                myPrefs.edit().putString("place",value_place).apply();
+//                String place = myPrefs.getString("place","Default");
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference data_place = database.getReference().child("Park").child(value_place).child("close");
+                data_place.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Map map = (Map) dataSnapshot.getValue();
+                        int value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
+                        int value_min = Integer.parseInt(String.valueOf(map.get("min")));
+                        String value_hour_txt = String.valueOf(map.get("hour"));
+                        String value_min_txt = String.valueOf(map.get("min"));
+                        if(value_status.equals("in")){
+                            myPrefs.edit().putString("hour",value_hour_txt).apply();
+                            myPrefs.edit().putString("min",value_min_txt).apply();
+                            Calendar c = Calendar.getInstance();
+                            c.set(Calendar.HOUR_OF_DAY, value_hour-1);
+                            c.set(Calendar.MINUTE, value_min);
+                            updateTimeText(c);
+                            startAlarm(c);
+                        }
+                        else {
+                            cancelAlarm();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {}
+                });
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
     }
-    private void startAlarm(boolean isNotification, boolean isRepeat) {
-        AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        Intent myIntent;
-        PendingIntent pendingIntent;
 
-        // SET TIME HERE
-        Calendar calendar= Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY,17);
-        calendar.set(Calendar.MINUTE,23);
+    private void updateTimeText(Calendar c) {
+        String timeText = "Alarm set for: ";
+        timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+        mTextView.setText(timeText);
+    }
 
-        Toast.makeText(Notifications.this, "Yes", Toast.LENGTH_SHORT).show();
-        myIntent = new Intent(Notifications.this,AlarmNotificationReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(this,0,myIntent,0);
+    private void startAlarm(Calendar c) {
+        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getActivity().getApplication(), AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplication(), 1, intent, 0);
 
+        if (c.before(Calendar.getInstance())) {
+            c.add(Calendar.DATE, 1);
+        }
 
-        if(isRepeat){
-            Toast.makeText(Notifications.this, calendar.getTime().toString(), Toast.LENGTH_SHORT).show();
-            manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime()+3000,pendingIntent);}
-        else{
-            Toast.makeText(Notifications.this, "Get", Toast.LENGTH_SHORT).show();
-            manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);}
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+    }
+
+    private void cancelAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getActivity().getApplication(), AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplication(), 1, intent, 0);
+
+        alarmManager.cancel(pendingIntent);
+        mTextView.setText("Alarm canceled");
     }
 }
