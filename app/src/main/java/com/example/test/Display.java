@@ -52,33 +52,26 @@ public class Display extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    myPrefs.edit().putBoolean("togglebutton",true).apply();
-                }
-                else {
-                    myPrefs.edit().putBoolean("togglebutton",false).apply();
+                    myPrefs.edit().putInt("togglebutton",0).apply();
                 }
             }
         });
-//        red.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getActivity().getApplication(), "Try Again", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        green.setOnClickListener(new View.OnClickListener() {
+        green.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity().getApplication(), "Try Again", Toast.LENGTH_SHORT).show();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    myPrefs.edit().putInt("togglebutton",1).apply();
+                }
             }
         });
-        all.setOnClickListener(new View.OnClickListener() {
+        all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity().getApplication(), "Try Again", Toast.LENGTH_SHORT).show();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    myPrefs.edit().putInt("togglebutton",2).apply();
+                }
             }
         });
-
-
         return view;
     }
 }
