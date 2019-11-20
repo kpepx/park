@@ -41,6 +41,10 @@ public class Third extends FragmentActivity {
                     getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             new MapExample()).commit();
                 }
+                else{
+                    BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+                    bottomNav.setOnNavigationItemSelectedListener(NavListener);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -65,6 +69,7 @@ public class Third extends FragmentActivity {
                     }
                     getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
+//                    myPrefs.edit().putString("place",value_place).apply();
                     return true;
                 }
             };

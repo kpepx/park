@@ -48,28 +48,26 @@ public class Display extends Fragment {
         RadioButton red = (RadioButton) view.findViewById(R.id.red);
         RadioButton green = (RadioButton) view.findViewById(R.id.green);
         RadioButton all = (RadioButton) view.findViewById(R.id.all);
+        int check = myPrefs.getInt("radio_color", 0);
+        if(check == 0){ red.setChecked(true); }
+        if(check == 1){ green.setChecked(true); }
+        if(check == 2){ all.setChecked(true); }
         red.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    myPrefs.edit().putInt("togglebutton",0).apply();
-                }
+                if(isChecked){ myPrefs.edit().putInt("radio_color",0).apply();}
             }
         });
         green.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    myPrefs.edit().putInt("togglebutton",1).apply();
-                }
+                if(isChecked){ myPrefs.edit().putInt("radio_color",1).apply();}
             }
         });
         all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    myPrefs.edit().putInt("togglebutton",2).apply();
-                }
+                if(isChecked){myPrefs.edit().putInt("radio_color",2).apply();}
             }
         });
         return view;

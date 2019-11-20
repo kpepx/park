@@ -138,9 +138,9 @@ public class SettingFragment extends Fragment{
     }
 
     private void startAlarm(Calendar c) {
-        AlarmManager alarmManager = (AlarmManager) getActivity().getApplication().getSystemService(Context.ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(getActivity().getApplication(), AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplication(), 1, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 1, intent, 0);
 
         if (c.before(Calendar.getInstance())) {
             c.add(Calendar.DATE, 1);
@@ -149,9 +149,9 @@ public class SettingFragment extends Fragment{
     }
 
     private void cancelAlarm() {
-        AlarmManager alarmManager = (AlarmManager) getActivity().getApplication().getSystemService(Context.ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(getActivity().getApplication(), AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplication(), 1, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 1, intent, 0);
 
         alarmManager.cancel(pendingIntent);
 //        mTextView.setText("Alarm canceled");

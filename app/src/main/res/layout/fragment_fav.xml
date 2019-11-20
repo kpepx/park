@@ -38,4 +38,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.812" />
+
+    <Button
+        android:id="@+id/buttonmaptest"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="350dp"
+        android:layout_height="89dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/setbox"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248" />
+
+    <TextView
+        android:id="@+id/maptext"
+        android:layout_width="217dp"
+        android:layout_height="34dp"
+        android:adjustViewBounds="true"
+        android:fontFamily="@font/alithin"
+        android:text="Example Map Test"
+        android:textColor="#5E5C5C"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.263" />
 </androidx.constraintlayout.widget.ConstraintLayout>
