@@ -79,10 +79,12 @@ public class SettingFragment extends Fragment{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     myPrefs.edit().putBoolean("sw",true).apply();
+                    Toast.makeText(getActivity().getApplication(), "Notifications ON", Toast.LENGTH_SHORT).show();
                     onTimeSet();
                 }
                 else {
                     myPrefs.edit().putBoolean("sw",false).apply();
+                    Toast.makeText(getActivity().getApplication(), "Notifications OFF", Toast.LENGTH_SHORT).show();
                     cancelAlarm();
                 }
             }
