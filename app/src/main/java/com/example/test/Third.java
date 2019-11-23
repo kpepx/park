@@ -21,13 +21,15 @@ import java.util.Map;
 public class Third extends FragmentActivity {
     public DatabaseReference data;
     SharedPreferences myPrefs;
+    public Fragment back_map;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.third_page);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(NavListener);
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit(); // setให้เปิดมาละเป็นหน้าhome
+//        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit(); // setให้เปิดมาละเป็นหน้าhome
+        back_map = new MapFragment();
         myPrefs = getSharedPreferences("ID", 0);
         String rfid = myPrefs.getString("rfid","Default");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -35,15 +37,16 @@ public class Third extends FragmentActivity {
         data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Map map = (Map) dataSnapshot.getValue();
-                String value_status = String.valueOf(map.get("status"));
-                if(value_status.equals("in")){
-                    getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new MapExample()).commit();
-                }
-                else{
-                    BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-                    bottomNav.setOnNavigationItemSelectedListener(NavListener);
+                if (dataSnapshot.exists()) {
+                    Map map = (Map) dataSnapshot.getValue();
+                    String value_status = String.valueOf(map.get("status"));
+                    if (value_status.equals("in")) {
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new MapExample()).commit();
+                    } else {
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                back_map).commit();
+                    }
                 }
             }
             @Override
@@ -69,7 +72,7 @@ public class Third extends FragmentActivity {
                     }
                     getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
-//                    myPrefs.edit().putString("place",value_place).apply();
+                    back_map = selectedFragment;
                     return true;
                 }
             };
