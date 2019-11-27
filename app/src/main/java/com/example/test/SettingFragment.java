@@ -71,8 +71,8 @@ public class SettingFragment extends Fragment{
 //        mTextView = view.findViewById(R.id.textView);
         myPrefs = this.getActivity().getSharedPreferences("ID", 0);
         Switch sw = (Switch) view.findViewById(R.id.swbutton);
-        if(myPrefs.getBoolean("sw", true)){
-            sw.setChecked(myPrefs.getBoolean("sw", true));
+        if(myPrefs.getBoolean("sw", false)){
+            sw.setChecked(myPrefs.getBoolean("sw", false));
             onTimeSet();
         }
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
