@@ -93,43 +93,69 @@ public class SettingFragment extends Fragment{
     }
     public void onTimeSet() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String rfid = myPrefs.getString("rfid","Default");
+        final String rfid = myPrefs.getString("rfid","Default");
         data = database.getReference().child("User").child(rfid);
         data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map map = (Map) dataSnapshot.getValue();
                 final String value_status = String.valueOf(map.get("status"));
-                String value_place = String.valueOf(map.get("place"));
-                myPrefs.edit().putString("place",value_place).apply();
-                String place = myPrefs.getString("place","Default");
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference data_place = database.getReference().child("Park").child(place).child("close");
-                data_place.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Map map = (Map) dataSnapshot.getValue();
-                        int value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
-                        int value_min = Integer.parseInt(String.valueOf(map.get("min")));
-                        if(value_status.equals("in")){
-                            Calendar c = Calendar.getInstance();
-                            c.set(Calendar.HOUR_OF_DAY, value_hour-1);
-                            c.set(Calendar.MINUTE, value_min);
-                            c.set(Calendar.SECOND, 0);
-                            updateTimeText(c);
-                            startAlarm(c);
+                if (value_status.equals("in")) {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    data = database.getReference().child("User").child(rfid);
+                    data.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Map map = (Map) dataSnapshot.getValue();
+                            String value_place = String.valueOf(map.get("place"));
+                            final String value_status = String.valueOf(map.get("status"));
+                            myPrefs.edit().putString("place", value_place).apply();
+                            String place = myPrefs.getString("place", "Default");
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference data_place = database.getReference().child("Park").child(place).child("close");
+                            data_place.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    Map map = (Map) dataSnapshot.getValue();
+                                    int value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
+                                    int value_min = Integer.parseInt(String.valueOf(map.get("min")));
+                                    if (value_status.equals("in")) {
+                                        Calendar c = Calendar.getInstance();
+                                        c.set(Calendar.HOUR_OF_DAY, value_hour - 1);
+                                        c.set(Calendar.MINUTE, value_min);
+                                        c.set(Calendar.SECOND, 0);
+                                        updateTimeText(c);
+                                        startAlarm(c);
+                                        Toast.makeText(getActivity().getApplication(), "start", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        cancelAlarm();
+                                        Toast.makeText(getActivity().getApplication(), "cancel", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    return;
+                                }
+                            });
                         }
-                        else {
-                            cancelAlarm();
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            return;
                         }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {}
-                });
+                    });
+                }
+                else{
+                    cancelAlarm();
+                    Toast.makeText(getActivity().getApplication(), "cancel", Toast.LENGTH_SHORT).show();
+                }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled (@NonNull DatabaseError databaseError){
+                return;
+            }
         });
+
     }
 
     private void updateTimeText(Calendar c) {
