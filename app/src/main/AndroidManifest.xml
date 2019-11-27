@@ -16,7 +16,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,13 +24,16 @@
         <activity android:name="Account"></activity>
         <activity android:name="About"></activity>
         <activity android:name="Display"></activity>
-        <activity android:name="Notifications"></activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCdkHxVa0ARy3OgW8eXk7aE2JRetWTu1l8"/>
 
-        <receiver android:name=".AlarmNotificationReceiver"/>
-        <receiver android:name=".AlertReceiver" />
+        <receiver android:name=".AlertReceiver">
+            <intent-filter>
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
