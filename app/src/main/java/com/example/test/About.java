@@ -27,7 +27,6 @@ public class About extends Fragment {
                         new SettingFragment()).commit();
             }
         });
-
         return view;
     }
 }
