@@ -86,9 +86,10 @@ public class HomeFragment extends Fragment implements
              @Override
              public void onMapReady(GoogleMap googleMap) {
                  mMap = googleMap;
-                 UiSettings uiset = googleMap.getUiSettings();
                  mMap.setMaxZoomPreference(20.0f);
                  mMap.setMinZoomPreference(18.0f);
+                 UiSettings uiSettings = mMap.getUiSettings();
+                 UiSettings uiset = googleMap.getUiSettings();
                  uiset.setZoomGesturesEnabled(true);
                  uiset.setMyLocationButtonEnabled(true);
                  //Show default location

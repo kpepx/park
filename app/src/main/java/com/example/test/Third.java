@@ -61,7 +61,7 @@ public class Third extends FragmentActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()){
                         case R.id.nav_home:
-                            selectedFragment = new MapFragment();
+                            selectedFragment = new HomeFragment();
                             break;
                         case R.id.nav_fav:
                             selectedFragment = new FavFragment();
