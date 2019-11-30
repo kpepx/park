@@ -1,6 +1,7 @@
 package com.example.test;
 
 import android.Manifest;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -30,7 +31,9 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -40,15 +43,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment implements
+        OnMapReadyCallback,
         GoogleMap.OnCameraMoveStartedListener,
         GoogleMap.OnMyLocationButtonClickListener{
 
     MapView mapView;
-    private GoogleMap mMap;
+    public GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
     private LocationRequest locationRequest;
     private Location lastLocation;
     private static final int Request_User_Location_Code = 99;
+    boolean dark;
     // Database
     private FirebaseDatabase firebaseDatabase;
     // Marker
@@ -59,6 +64,7 @@ public class HomeFragment extends Fragment implements
     private LatLng teacherlatlng = new LatLng(13.653043274611724, 100.49395879756162);
     private LatLng CBlatlng = new LatLng(13.650780893328243, 100.49339553366849);
     private int yourZIndex = 1;
+    SharedPreferences myPrefs;
 
     @Nullable
     @Override
@@ -76,51 +82,57 @@ public class HomeFragment extends Fragment implements
         }
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
-        
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkUserLocationPermission();
-        }
+
+        checkUserLocationPermission();
         setFirebaseMarker();
 
-         mapView.getMapAsync(new OnMapReadyCallback() {
-             @Override
-             public void onMapReady(GoogleMap googleMap) {
-                 mMap = googleMap;
-                 mMap.setMaxZoomPreference(20.0f);
-                 mMap.setMinZoomPreference(18.0f);
-                 UiSettings uiSettings = mMap.getUiSettings();
-                 UiSettings uiset = googleMap.getUiSettings();
-                 uiset.setZoomGesturesEnabled(true);
-                 uiset.setMyLocationButtonEnabled(true);
-                 //Show default location
-                 mMap.setOnMyLocationButtonClickListener(HomeFragment.this);
-                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.654664460757083, 100.4945864344711), 20));
-
-
-                 locationRequest = new LocationRequest();
-                 locationRequest.setInterval(1200);
-                 locationRequest.setFastestInterval(900);
-                 locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-
-             }
-         });
+         mapView.getMapAsync(this);
         return rootView;
     }
-    
-    // Asked for Location Permission
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        mMap.setMaxZoomPreference(20.0f);
+        mMap.setMinZoomPreference(18.0f);
+
+
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            mMap.setMyLocationEnabled(true);
+        }
+
+                 /*boolean mode = myPrefs.getBoolean("togglebutton", true);
+                 if (mode){
+                     mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.darkmode));
+//                 }*/
+//
+//                 UiSettings uiset = googleMap.getUiSettings();
+//                 uiset.setZoomGesturesEnabled(true);
+//                 uiset.setMyLocationButtonEnabled(true);
+        //Show default location
+        mMap.setOnCameraMoveStartedListener(this);
+        mMap.setOnMyLocationButtonClickListener(this);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.654664460757083, 100.4945864344711), 20));
+
+        locationRequest = new LocationRequest();
+        locationRequest.setInterval(1200);
+        locationRequest.setFastestInterval(900);
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+    }
+
+    // Asked for Location Permission
     private boolean checkUserLocationPermission() {
-        this.getActivity();
-        if (ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale
-                    (this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
-                ActivityCompat.requestPermissions
-                        (this.getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}
+            if (shouldShowRequestPermissionRationale
+                    (Manifest.permission.ACCESS_FINE_LOCATION)) {
+                        requestPermissions
+                        (new String[]{Manifest.permission.ACCESS_FINE_LOCATION}
                                 , Request_User_Location_Code);
             } else {
-                ActivityCompat.requestPermissions
-                        (this.getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}
+                requestPermissions
+                        (new String[]{Manifest.permission.ACCESS_FINE_LOCATION}
                                 , Request_User_Location_Code);
             }
             return false;
@@ -134,12 +146,12 @@ public class HomeFragment extends Fragment implements
         switch (requestCode) {
             case Request_User_Location_Code:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
                         mMap.setMyLocationEnabled(true);
                     }
                 } else {
-                    Toast.makeText(this.getActivity(), "Permission Denied ...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Permission Denied ...", Toast.LENGTH_SHORT).show();
                 }
         }
     }
@@ -165,10 +177,7 @@ public class HomeFragment extends Fragment implements
 
     @Override
     public boolean onMyLocationButtonClick() {
-        if (fusedLocationClient != null)
-        {
-            fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
-        }
+        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
         return false;
     }
 
