@@ -28,8 +28,8 @@ public class Third extends FragmentActivity {
         setContentView(R.layout.third_page);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(NavListener);
-//        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit(); // setให้เปิดมาละเป็นหน้าhome
-        back_map = new MapFragment();
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit(); // setให้เปิดมาละเป็นหน้าhome
+        back_map = new HomeFragment();
         myPrefs = getSharedPreferences("ID", 0);
         String rfid = myPrefs.getString("rfid","Default");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
