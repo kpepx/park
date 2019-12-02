@@ -35,7 +35,7 @@ public class MapExample extends Fragment {
         final ImageView image_1 = (ImageView) view.findViewById(R.id.status1);
         final ImageView image_2 = (ImageView) view.findViewById(R.id.status2);
         final ImageView image_3 = (ImageView) view.findViewById(R.id.status3);
-        final TextView name = (TextView) view.findViewById(R.id.namePark1);
+        final TextView name = (TextView) view.findViewById(R.id.namePark);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         data = database.getReference().child("User").child(rfid);
         data.addValueEventListener(new ValueEventListener() {
