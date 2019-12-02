@@ -58,7 +58,7 @@
 
         <TextView
             android:layout_width="256dp"
-            android:layout_height="wrap_content"
+            android:layout_height="72dp"
             android:layout_gravity="center"
             android:fontFamily="@font/alithin"
             android:text=" This parking lot is full now please try again next time"
@@ -68,7 +68,7 @@
         <TextView
             android:id="@+id/close"
             android:layout_width="314dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_gravity="center"
             android:fontFamily="@font/monsemibold"
             android:text="Close:"
@@ -84,7 +84,7 @@
         <TextView
             android:id="@+id/open"
             android:layout_width="314dp"
-            android:layout_height="wrap_content"
+            android:layout_height="41dp"
             android:layout_gravity="center"
             android:fontFamily="@font/monsemibold"
             android:text="Open:"
@@ -100,7 +100,7 @@
         <TextView
             android:id="@+id/emcall"
             android:layout_width="314dp"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
             android:layout_gravity="center"
             android:fontFamily="@font/monsemibold"
             android:text="Emergency call: 098-765-4321"
