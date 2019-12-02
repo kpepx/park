@@ -9,8 +9,10 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.app.Fragment;
+import android.widget.CheckBox;
 
 public class Add extends Fragment {
+    CheckBox ch,ch2,ch3;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
