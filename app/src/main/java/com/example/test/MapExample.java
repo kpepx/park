@@ -86,53 +86,91 @@ public class MapExample extends Fragment {
                                 if (car1.equals("1")) {
                                     image_1.setImageResource(R.drawable.red);
                                 }
-                                if (car1.equals("0")) {
+                                else if (car1.equals("0")) {
                                     image_1.setImageResource(R.drawable.none);
+                                }
+                                else{
+                                    image_1.setImageResource(R.drawable.notavaliable);
                                 }
                                 if (car2.equals("1")) {
                                     image_2.setImageResource(R.drawable.red);
                                 }
-                                if (car2.equals("0")) {
+                                else if (car2.equals("0")) {
                                     image_2.setImageResource(R.drawable.none);
+                                }
+                                else{
+                                    image_2.setImageResource(R.drawable.notavaliable);
+                                }
+                                if (car3.equals("1")) {
+                                    image_3.setImageResource(R.drawable.red);
+                                }
+                                else if (car3.equals("0")) {
+                                    image_3.setImageResource(R.drawable.none);
+                                }
+                                else{
+                                    image_3.setImageResource(R.drawable.notavaliable);
                                 }
                             }
-
 //                            else if(!car3.equals("1") && !car3.equals("0")){image_3.setImageResource(R.drawable.notavaliable);}}
                             else if (radio_color == 1) {
-                                if (car1.equals("0")) {
+                                if (car1.equals("1")) {
                                     image_1.setImageResource(R.drawable.green);
                                 }
-                                if (car1.equals("1")) {
+                                else if (car1.equals("0")) {
                                     image_1.setImageResource(R.drawable.none);
                                 }
-                                if (car2.equals("0")) {
-                                    image_2.setImageResource(R.drawable.green);
+                                else{
+                                    image_1.setImageResource(R.drawable.notavaliable);
                                 }
                                 if (car2.equals("1")) {
+                                    image_2.setImageResource(R.drawable.green);
+                                }
+                                else if (car2.equals("0")) {
                                     image_2.setImageResource(R.drawable.none);
+                                }
+                                else{
+                                    image_2.setImageResource(R.drawable.notavaliable);
+                                }
+                                if (car3.equals("1")) {
+                                    image_3.setImageResource(R.drawable.green);
+                                }
+                                else if (car3.equals("0")) {
+                                    image_3.setImageResource(R.drawable.none);
+                                }
+                                else{
+                                    image_3.setImageResource(R.drawable.notavaliable);
                                 }
                             }
 //                            else if(!car3.equals("1") && !car3.equals("0")){image_3.setImageResource(R.drawable.notavaliable);}}
                             else if (radio_color == 2) {
                                 if (car1.equals("1")) {
                                     image_1.setImageResource(R.drawable.red);
-                                } else {
+                                }
+                                else if (car1.equals("0")) {
                                     image_1.setImageResource(R.drawable.green);
+                                }
+                                else{
+                                    image_3.setImageResource(R.drawable.notavaliable);
                                 }
                                 if (car2.equals("1")) {
                                     image_2.setImageResource(R.drawable.red);
-                                } else {
+                                }
+                                else if (car2.equals("0")) {
                                     image_2.setImageResource(R.drawable.green);
+                                }
+                                else{
+                                    image_3.setImageResource(R.drawable.notavaliable);
                                 }
                                 if (car3.equals("1")) {
                                     image_3.setImageResource(R.drawable.red);
-                                } else if (car3.equals("0")) {
+                                }
+                                else if (car3.equals("0")) {
                                     image_3.setImageResource(R.drawable.green);
-                                } else {
+                                }
+                                else{
                                     image_3.setImageResource(R.drawable.notavaliable);
                                 }
                             }
-                            image_3.setImageResource(R.drawable.notavaliable);
                         }
 
                         @Override
