@@ -6,36 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/parking">
 
-    <ImageView
-        android:id="@+id/park"
-        android:layout_width="600dp"
-        android:layout_height="92dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="24dp"
-        android:background="@drawable/displaybox"
-        android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.348"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786" />
-
-
-    <ImageView
-        android:id="@+id/park1"
-        android:layout_width="600dp"
-        android:layout_height="92dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="24dp"
-        android:background="@drawable/displaybox"
-        android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.318"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786" />
 
     <ImageView
         android:id="@+id/status1"
@@ -71,45 +41,18 @@
         app:layout_constraintVertical_bias="0.365" />
 
     <TextView
-        android:id="@+id/namePark1"
-        android:layout_width="160dp"
-        android:layout_height="70dp"
-        android:fontFamily="@font/alireg"
-        android:textColor="#272727"
-        android:textSize="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.158" />
-
-    <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/namePark"
         android:layout_width="222dp"
         android:layout_height="52dp"
         android:fontFamily="@font/monsemibold"
         android:text="PARKING"
-        android:textColor="@color/colorBlack"
         android:textSize="45dp"
+        android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.076" />
-
-    <Button
-        android:id="@+id/buttonbackpark"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.006"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018" />
+        app:layout_constraintVertical_bias="0.13" />
 
     <Button
         android:id="@+id/buttoninfo"
