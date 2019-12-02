@@ -13,9 +13,12 @@ import android.widget.ToggleButton;
 import androidx.annotation.Nullable;
 import android.app.Fragment;
 
+import com.google.android.gms.maps.model.MapStyleOptions;
+
 public class Display extends Fragment {
     SharedPreferences myPrefs;
     Button buttonback3;//ปุ่มย้อนไปหน้าsetting
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
