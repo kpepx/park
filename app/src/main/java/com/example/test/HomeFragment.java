@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment implements
 //
 //                 UiSettings uiset = googleMap.getUiSettings();
 //                 uiset.setZoomGesturesEnabled(true);
-//                 uiset.setMyLocationButtonEnabled(true);
+//                 uiset.setMyLocationButtonEnabled(true)
         //Show default location
         mMap.setOnCameraMoveStartedListener(this);
         mMap.setOnMyLocationButtonClickListener(this);
