@@ -136,7 +136,6 @@ public class HomeFragment extends Fragment implements
         locationRequest.setFastestInterval(900);
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
 
-
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
     }
 
