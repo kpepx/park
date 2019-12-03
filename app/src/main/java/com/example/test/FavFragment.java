@@ -52,23 +52,23 @@ public class FavFragment extends Fragment {
                 Button map = (Button)view.findViewById(R.id.buttonmap1);
                 map.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        myPrefs.edit().putInt("MapClick", 2).apply();
-                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new MapParking()).commit();
-                    }
-                });
-                txt_1.setText("CB1");
-            }
-            else if(myPrefs.getBoolean("cb2", false) == true){
-                Button map = (Button)view.findViewById(R.id.buttonmap1);
-                map.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
                         myPrefs.edit().putInt("MapClick", 1).apply();
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new MapParking()).commit();
                     }
                 });
                 txt_1.setText("FIBO");
+            }
+            else if(myPrefs.getBoolean("cb2", false) == true){
+                Button map = (Button)view.findViewById(R.id.buttonmap1);
+                map.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        myPrefs.edit().putInt("MapClick", 2).apply();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new MapParking()).commit();
+                    }
+                });
+                txt_1.setText("CB1");
             }
             else if(myPrefs.getBoolean("cb3", false) == true){
                 Button map = (Button)view.findViewById(R.id.buttonmap1);
@@ -91,6 +91,26 @@ public class FavFragment extends Fragment {
                 Button map = (Button)view.findViewById(R.id.buttonmap1);
                 map.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
+                        myPrefs.edit().putInt("MapClick", 2).apply();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new MapParking()).commit();
+                    }
+                });
+                Button map2 = (Button)view.findViewById(R.id.buttonmap2);
+                map2.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        myPrefs.edit().putInt("MapClick", 51).apply();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new MapParking()).commit();
+                    }
+                });
+                txt_1.setText("CB1");
+                txt_2.setText("TEACHER");
+            }
+            if(myPrefs.getBoolean("cb2", false) == false){
+                Button map = (Button)view.findViewById(R.id.buttonmap1);
+                map.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
                         myPrefs.edit().putInt("MapClick", 1).apply();
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new MapParking()).commit();
@@ -107,45 +127,25 @@ public class FavFragment extends Fragment {
                 txt_1.setText("FIBO");
                 txt_2.setText("TEACHER");
             }
-            if(myPrefs.getBoolean("cb2", false) == false){
-                Button map = (Button)view.findViewById(R.id.buttonmap1);
-                map.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        myPrefs.edit().putInt("MapClick", 2).apply();
-                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new MapParking()).commit();
-                    }
-                });
-                Button map2 = (Button)view.findViewById(R.id.buttonmap2);
-                map2.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        myPrefs.edit().putInt("MapClick", 51).apply();
-                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new MapParking()).commit();
-                    }
-                });
-                txt_1.setText("CB1");
-                txt_2.setText("TEACHER");
-            }
             if(myPrefs.getBoolean("cb3", false) == false){
                 Button map = (Button)view.findViewById(R.id.buttonmap1);
                 map.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        myPrefs.edit().putInt("MapClick", 2).apply();
-                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new MapParking()).commit();
-                    }
-                });
-                Button map2 = (Button)view.findViewById(R.id.buttonmap2);
-                map2.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         myPrefs.edit().putInt("MapClick", 1).apply();
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new MapParking()).commit();
                     }
                 });
-                txt_2.setText("FIBO");
-                txt_1.setText("CB1");
+                Button map2 = (Button)view.findViewById(R.id.buttonmap2);
+                map2.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        myPrefs.edit().putInt("MapClick", 2).apply();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new MapParking()).commit();
+                    }
+                });
+                txt_2.setText("CB1");
+                txt_1.setText("FIBO");
             }
             txt_3.setVisibility(View.GONE);
             image_3.setVisibility(View.GONE);
@@ -155,7 +155,7 @@ public class FavFragment extends Fragment {
                 Button map = (Button)view.findViewById(R.id.buttonmap1);
                 map.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        myPrefs.edit().putInt("MapClick", 2).apply();
+                        myPrefs.edit().putInt("MapClick", 1).apply();
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new MapParking()).commit();
                     }
@@ -165,7 +165,7 @@ public class FavFragment extends Fragment {
                 Button map = (Button)view.findViewById(R.id.buttonmap2);
                 map.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        myPrefs.edit().putInt("MapClick", 1).apply();
+                        myPrefs.edit().putInt("MapClick", 2).apply();
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new MapParking()).commit();
                     }
@@ -181,8 +181,8 @@ public class FavFragment extends Fragment {
                     }
                 });
             }
-            txt_1.setText("CB1");
-            txt_2.setText("FIBO");
+            txt_1.setText("FIBO");
+            txt_2.setText("CB1");
             txt_3.setText("TEACHER");
         }
         return view;

@@ -48,7 +48,9 @@ public class Third extends FragmentActivity {
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 Map map = (Map) dataSnapshot.getValue();
                                 String value_place = String.valueOf(map.get("place"));
+                                String value_park = String.valueOf(map.get("park"));
                                 myPrefs.edit().putInt("MapClick", Integer.parseInt(value_place)).apply();
+                                myPrefs.edit().putInt("park", Integer.parseInt(value_park)).apply();
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
