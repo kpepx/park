@@ -42,14 +42,15 @@
 
     <TextView
         android:id="@+id/namePark"
-        android:layout_width="222dp"
-        android:layout_height="52dp"
+        android:layout_width="188dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:fontFamily="@font/monsemibold"
         android:textColor="@color/colorBlack"
         android:textSize="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.136" />
