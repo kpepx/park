@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/monsemibold"
-            android:text="Emergency call: 098-765-4321"
+            android:text="Call center: 098-765-4321"
             android:textColor="@color/colorBlack"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"

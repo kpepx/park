@@ -40,11 +40,14 @@ public class Display extends Fragment {
         togglebutton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    myPrefs.edit().putBoolean("togglebutton",true).apply();
+                if(isChecked) {
+                    myPrefs.edit().putBoolean("togglebutton", true).apply();
+                    Toast.makeText(getActivity(), "Map: Dark mode", Toast.LENGTH_SHORT).show();
+
                 }
                 else {
                     myPrefs.edit().putBoolean("togglebutton",false).apply();
+                    Toast.makeText(getActivity(), "Map: Normal", Toast.LENGTH_SHORT).show();
                 }
             }
         });

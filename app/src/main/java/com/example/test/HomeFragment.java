@@ -6,7 +6,10 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,8 +87,17 @@ public class HomeFragment extends Fragment implements
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
 
         checkUserLocationPermission();
-        setFirebaseMarker();
+        new CountDownTimer(1000, 1000) {
+            public void onFinish() {
+                // When timer is finished
+                // Execute your code here
+            }
 
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+                setFirebaseMarker();
+            }
+        }.start();
          mapView.getMapAsync(this);
         return rootView;
     }
@@ -102,10 +114,13 @@ public class HomeFragment extends Fragment implements
             mMap.setMyLocationEnabled(true);
         }
 
-                 /*boolean mode = myPrefs.getBoolean("togglebutton", true);
-                 if (mode){
-                     mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.darkmode));
-//                 }*/
+        // Dark mode enable
+        myPrefs = this.getActivity().getSharedPreferences("ID", 0);
+        boolean mode = myPrefs.getBoolean("togglebutton",true);
+        if(mode){
+            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.darkmode));
+        }
+
 //
 //                 UiSettings uiset = googleMap.getUiSettings();
 //                 uiset.setZoomGesturesEnabled(true);
