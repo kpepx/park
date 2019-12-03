@@ -48,7 +48,7 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeFragment extends Fragment implements
         OnMapReadyCallback,
         GoogleMap.OnCameraMoveStartedListener,
-        GoogleMap.OnMyLocationButtonClickListener{
+        GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener {
 
     MapView mapView;
     public GoogleMap mMap;
@@ -63,6 +63,7 @@ public class HomeFragment extends Fragment implements
     private Marker fibomarker;
     private Marker CBmarker;
     private Marker teachermarker;
+    private Marker mark;
     private LatLng fibolatlng = new LatLng(13.654664460757083, 100.4945864344711);
     private LatLng teacherlatlng = new LatLng(13.653043274611724, 100.49395879756162);
     private LatLng CBlatlng = new LatLng(13.650780893328243, 100.49339553366849);
@@ -87,7 +88,8 @@ public class HomeFragment extends Fragment implements
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
 
         checkUserLocationPermission();
-        new CountDownTimer(1000, 1000) {
+
+        new CountDownTimer(500, 1000) {
             public void onFinish() {
                 // When timer is finished
                 // Execute your code here
@@ -107,7 +109,7 @@ public class HomeFragment extends Fragment implements
         mMap = googleMap;
         mMap.setMaxZoomPreference(20.0f);
         mMap.setMinZoomPreference(18.0f);
-
+        mMap.setOnMarkerClickListener(this);
 
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
@@ -128,12 +130,14 @@ public class HomeFragment extends Fragment implements
         //Show default location
         mMap.setOnCameraMoveStartedListener(this);
         mMap.setOnMyLocationButtonClickListener(this);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.654664460757083, 100.4945864344711), 20));
 
         locationRequest = new LocationRequest();
         locationRequest.setInterval(1200);
         locationRequest.setFastestInterval(900);
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+
+
+        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
     }
 
     // Asked for Location Permission
@@ -215,23 +219,21 @@ public class HomeFragment extends Fragment implements
                         count++;
                     }
                 }
-                MarkerOptions fibomarker = new MarkerOptions()
-                        .position(fibolatlng);
                 if (count == 0) {
-                    fibomarker.icon(BitmapDescriptorFactory.fromResource(R.drawable._red));
-                    mMap.addMarker(fibomarker);
+                    fibomarker = mMap.addMarker(new MarkerOptions().position(fibolatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable._red)));
                 }
                 if (count == 1) {
-                    fibomarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1));
-                    mMap.addMarker(fibomarker);
+                    fibomarker = mMap.addMarker(new MarkerOptions().position(fibolatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1)));
                 }
                 if (count == 2) {
-                    fibomarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2));
-                    mMap.addMarker(fibomarker);
+                    fibomarker = mMap.addMarker(new MarkerOptions().position(fibolatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2)));
                 }
                 if (count == 3) {
-                    fibomarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3));
-                    mMap.addMarker(fibomarker);
+                    fibomarker = mMap.addMarker(new MarkerOptions().position(fibolatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                 }
             }
 
@@ -253,23 +255,24 @@ public class HomeFragment extends Fragment implements
                         count2++;
                     }
                 }
-                MarkerOptions teachermarker = new MarkerOptions()
-                        .position(teacherlatlng);
                 if (count2 == 0) {
-                    teachermarker.icon(BitmapDescriptorFactory.fromResource(R.drawable._red));
-                    mMap.addMarker(teachermarker);
+                    teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable._red)));
                 }
                 if (count2 == 1) {
-                    teachermarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1));
-                    mMap.addMarker(teachermarker);
+
+                    teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1)));
                 }
                 if (count2 == 2) {
-                    teachermarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2));
-                    mMap.addMarker(teachermarker);
+
+                    teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2)));
                 }
                 if (count2 == 3) {
-                    teachermarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3));
-                    mMap.addMarker(teachermarker);
+
+                    teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                 }
             }
 
@@ -291,23 +294,21 @@ public class HomeFragment extends Fragment implements
                         count1++;
                     }
                 }
-                MarkerOptions CBmarker = new MarkerOptions()
-                        .position(CBlatlng);
                 if (count1 == 0) {
-                    CBmarker.icon(BitmapDescriptorFactory.fromResource(R.drawable._red));
-                    mMap.addMarker(CBmarker);
+                    CBmarker = mMap.addMarker(new MarkerOptions().position(CBlatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable._red)));
                 }
                 if (count1 == 1) {
-                    CBmarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1));
-                    mMap.addMarker(CBmarker);
+                    CBmarker = mMap.addMarker(new MarkerOptions().position(CBlatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1)));
                 }
                 if (count1 == 2) {
-                    CBmarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2));
-                    mMap.addMarker(CBmarker);
+                    CBmarker = mMap.addMarker(new MarkerOptions().position(CBlatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2)));
                 }
                 if (count1 == 3) {
-                    CBmarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3));
-                    mMap.addMarker(CBmarker);
+                    CBmarker = mMap.addMarker(new MarkerOptions().position(CBlatlng).
+                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                 }
             }
 
@@ -317,4 +318,28 @@ public class HomeFragment extends Fragment implements
             }
         });
     }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        myPrefs = this.getActivity().getSharedPreferences("ID", 0);
+        if(marker.equals(fibomarker))
+        {
+            Toast.makeText(getActivity(), "Fibo", Toast.LENGTH_SHORT).show();
+            myPrefs.edit().putInt("MapClick", 1).apply();
+        }
+        if(marker.equals(teachermarker))
+        {
+            Toast.makeText(getActivity(), "teacher", Toast.LENGTH_SHORT).show();
+            myPrefs.edit().putInt("MapClick", 51).apply();
+        }
+        if(marker.equals(CBmarker))
+        {
+            Toast.makeText(getActivity(), "CB", Toast.LENGTH_SHORT).show();
+            myPrefs.edit().putInt("MapClick", 2).apply();
+        }
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new MapParking()).commit();
+        return false;
+    }
 }
+

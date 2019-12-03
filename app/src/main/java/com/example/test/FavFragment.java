@@ -22,7 +22,7 @@ public class FavFragment extends Fragment {
                         new Add()).commit();
             }
         });
-        Button map = (Button)view.findViewById(R.id.buttonmaptest);
+        Button map = (Button)view.findViewById(R.id.buttonmap1);
         map.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container,
