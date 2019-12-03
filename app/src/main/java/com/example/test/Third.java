@@ -20,6 +20,7 @@ import java.util.Map;
 
 public class Third extends FragmentActivity {
     public DatabaseReference data;
+    public DatabaseReference dat;
     SharedPreferences myPrefs;
     public Fragment back_map;
     @Override

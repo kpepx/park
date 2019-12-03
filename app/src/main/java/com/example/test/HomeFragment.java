@@ -288,7 +288,6 @@ public class HomeFragment extends Fragment implements
                 if (fibomarker != null) {
                     fibomarker.remove();
                 }
-
                 if(currentTime.get(Calendar.HOUR_OF_DAY)< FIBO_value_hour && currentTime.get(Calendar.HOUR_OF_DAY) > FIBO_value_hour1) {
                     for (DataSnapshot carin : dataSnapshot.getChildren()) {
                         if (carin.getValue(int.class) == 0) {
@@ -362,7 +361,6 @@ public class HomeFragment extends Fragment implements
                     fibomarker = mMap.addMarker(new MarkerOptions().position(fibolatlng).
                             icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_gray)));
                 }
-
             }
 
             @Override
@@ -371,102 +369,107 @@ public class HomeFragment extends Fragment implements
             }
         });
 
-        Teacher.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int count2 = 0;
-                if (teachermarker != null) {
-                    teachermarker.remove();
-                }
-                if(currentTime.get(Calendar.HOUR_OF_DAY)< teacher_value_hour && currentTime.get(Calendar.HOUR_OF_DAY) > teacher_value_hour1){
-                    for (DataSnapshot carin : dataSnapshot.getChildren()) {
-                        if (carin.getValue(int.class) == 0) {
-                            count2++;
+        myPrefs = this.getActivity().getSharedPreferences("ID", 0);
+        String stickk = myPrefs.getString("sticker","Default");
+        if(stickk.equals("teacher")){
+            Teacher.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    int count2 = 0;
+                    if (teachermarker != null) {
+                        teachermarker.remove();
+                    }
+                    if(currentTime.get(Calendar.HOUR_OF_DAY)< teacher_value_hour && currentTime.get(Calendar.HOUR_OF_DAY) > teacher_value_hour1){
+                        for (DataSnapshot carin : dataSnapshot.getChildren()) {
+                            if (carin.getValue(int.class) == 0) {
+                                count2++;
+                            }
+                        }
+                        if (count2 == 0) {
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable._red)));
+                        }
+                        if (count2 == 1) {
+
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1)));
+                        }
+                        if (count2 == 2) {
+
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2)));
+                        }
+                        if (count2 == 3) {
+
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                         }
                     }
-                    if (count2 == 0) {
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable._red)));
-                    }
-                    if (count2 == 1) {
+                    if(currentTime.get(Calendar.HOUR_OF_DAY)== teacher_value_hour && currentTime.get(Calendar.MINUTE)< teacher_value_min ){
+                        for (DataSnapshot carin : dataSnapshot.getChildren()) {
+                            if (carin.getValue(int.class) == 0) {
+                                count2++;
+                            }
+                        }
+                        if (count2 == 0) {
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable._red)));
+                        }
+                        if (count2 == 1) {
 
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1)));
-                    }
-                    if (count2 == 2) {
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1)));
+                        }
+                        if (count2 == 2) {
 
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2)));
-                    }
-                    if (count2 == 3) {
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2)));
+                        }
+                        if (count2 == 3) {
 
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
-                    }
-                }
-                if(currentTime.get(Calendar.HOUR_OF_DAY)== teacher_value_hour && currentTime.get(Calendar.MINUTE)< teacher_value_min ){
-                    for (DataSnapshot carin : dataSnapshot.getChildren()) {
-                        if (carin.getValue(int.class) == 0) {
-                            count2++;
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                         }
                     }
-                    if (count2 == 0) {
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable._red)));
-                    }
-                    if (count2 == 1) {
+                    if(currentTime.get(Calendar.HOUR_OF_DAY)== teacher_value_hour1&& currentTime.get(Calendar.MINUTE) >= teacher_value_min1){
+                        for (DataSnapshot carin : dataSnapshot.getChildren()) {
+                            if (carin.getValue(int.class) == 0) {
+                                count2++;
+                            }
+                        }
+                        if (count2 == 0) {
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable._red)));
+                        }
+                        if (count2 == 1) {
 
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1)));
-                    }
-                    if (count2 == 2) {
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1)));
+                        }
+                        if (count2 == 2) {
 
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2)));
-                    }
-                    if (count2 == 3) {
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2)));
+                        }
+                        if (count2 == 3) {
 
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
-                    }
-                }
-                if(currentTime.get(Calendar.HOUR_OF_DAY)== teacher_value_hour1&& currentTime.get(Calendar.MINUTE) >= teacher_value_min1){
-                    for (DataSnapshot carin : dataSnapshot.getChildren()) {
-                        if (carin.getValue(int.class) == 0) {
-                            count2++;
+                            teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                         }
                     }
-                    if (count2 == 0) {
+                    else {
                         teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable._red)));
-                    }
-                    if (count2 == 1) {
-
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green1)));
-                    }
-                    if (count2 == 2) {
-
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green2)));
-                    }
-                    if (count2 == 3) {
-
-                        teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
+                                icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_gray)));
                     }
                 }
-                else {
-                    teachermarker = mMap.addMarker(new MarkerOptions().position(teacherlatlng).
-                            icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_gray)));
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
                 }
-            }
+            });
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         CB.addValueEventListener(new ValueEventListener() {
             @Override
