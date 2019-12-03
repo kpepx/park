@@ -31,7 +31,7 @@ public class Third extends FragmentActivity {
         getFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit(); // setให้เปิดมาละเป็นหน้าhome
         back_map = new HomeFragment();
         myPrefs = getSharedPreferences("ID", 0);
-        String rfid = myPrefs.getString("rfid","Default");
+        final String rfid = myPrefs.getString("rfid","Default");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         data = database.getReference().child("User").child(rfid);
         data.addValueEventListener(new ValueEventListener() {
@@ -41,8 +41,21 @@ public class Third extends FragmentActivity {
                     Map map = (Map) dataSnapshot.getValue();
                     String value_status = String.valueOf(map.get("status"));
                     if (value_status.equals("in")) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        data = database.getReference().child("User").child(rfid);
+                        data.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Map map = (Map) dataSnapshot.getValue();
+                                String value_place = String.valueOf(map.get("place"));
+                                myPrefs.edit().putInt("MapClick", Integer.parseInt(value_place)).apply();
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
+                        });
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new MapExample()).commit();
+                                new MapParking()).commit();
                     } else {
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 back_map).commit();
