@@ -246,7 +246,6 @@ public class MapExample extends Fragment {
         data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Map map = (Map) dataSnapshot.getValue();
                 open_txt.setText("Open: "+dataSnapshot.child("open").child("hour").getValue()+":"+dataSnapshot.child("open").child("min").getValue()+" AM");
                 close_txt.setText("Close: "+dataSnapshot.child("close").child("hour").getValue()+":"+dataSnapshot.child("close").child("min").getValue()+" PM");
             }
