@@ -77,6 +77,16 @@ public class MapParking extends Fragment {
                 data.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        int count = 0;
+                        for (DataSnapshot carin : dataSnapshot.getChildren()) {
+                            if (carin.getValue(int.class) == 0) {
+                                count++;
+                            }
+                            carin.getKey();
+                        }
+                        if(count==0){
+                            showpopupfull(view);
+                        }
                         Map map = (Map) dataSnapshot.getValue();
                         String car1 = String.valueOf(map.get("car_1"));
                         String car2 = String.valueOf(map.get("car_2"));
@@ -111,7 +121,6 @@ public class MapParking extends Fragment {
                                 image_3.setImageResource(R.drawable.notavaliable);
                             }
                         }
-//                            else if(!car3.equals("1") && !car3.equals("0")){image_3.setImageResource(R.drawable.notavaliable);}}
                         else if (radio_color == 1) {
                             if (car1.equals("0")) {
                                 image_1.setImageResource(R.drawable.green);
@@ -141,7 +150,6 @@ public class MapParking extends Fragment {
                                 image_3.setImageResource(R.drawable.notavaliable);
                             }
                         }
-//                            else if(!car3.equals("1") && !car3.equals("0")){image_3.setImageResource(R.drawable.notavaliable);}}
                         else if (radio_color == 2) {
                             if (car1.equals("1")) {
                                 image_1.setImageResource(R.drawable.red);
@@ -172,15 +180,12 @@ public class MapParking extends Fragment {
                             }
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });
             }
         }.start();
-
-
         Button info = (Button) view.findViewById(R.id.buttoninfo);
         info.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
