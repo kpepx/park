@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/status1"
-        android:layout_width="101dp"
-        android:layout_height="219dp"
+        android:layout_width="104dp"
+        android:layout_height="226dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
@@ -20,25 +20,24 @@
 
     <ImageView
         android:id="@+id/status2"
-        android:layout_width="101dp"
-        android:layout_height="219dp"
+        android:layout_width="102dp"
+        android:layout_height="218dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.365" />
+        app:layout_constraintVertical_bias="0.36" />
 
     <ImageView
         android:id="@+id/status3"
-        android:layout_width="101dp"
-        android:layout_height="219dp"
+        android:layout_width="104dp"
+        android:layout_height="220dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.365" />
+        app:layout_constraintVertical_bias="0.358" />
 
     <TextView
         android:id="@+id/namePark"

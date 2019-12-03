@@ -24,27 +24,29 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.016" />
+        app:layout_constraintVertical_bias="0.009" />
 
     <LinearLayout
-        android:layout_width="330dp"
-        android:layout_height="380dp"
+        android:layout_width="284dp"
+        android:layout_height="234dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.847"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.655">
+        app:layout_constraintVertical_bias="0.435">
 
         <TextView
-            android:layout_width="244dp"
-            android:layout_height="38dp"
-            android:layout_gravity="center"
+            android:layout_width="274dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:fontFamily="@font/monsemibold"
             android:text="INFORMATION"
             android:textColor="@color/colorBlack"
@@ -57,9 +59,9 @@
 
         <TextView
             android:id="@+id/capacity"
-            android:layout_width="316dp"
+            android:layout_width="258dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="right"
             android:fontFamily="@font/monsemibold"
             android:text="Capacity:"
             android:textColor="@color/colorBlack"
@@ -73,9 +75,9 @@
 
         <TextView
             android:id="@+id/available"
-            android:layout_width="315dp"
+            android:layout_width="258dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="right"
             android:fontFamily="@font/monsemibold"
             android:text="Available:"
             android:textColor="@color/colorBlack"
@@ -89,9 +91,9 @@
 
         <TextView
             android:id="@+id/open"
-            android:layout_width="314dp"
+            android:layout_width="257dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="right"
             android:fontFamily="@font/monsemibold"
             android:text="Open:"
             android:textColor="@color/colorBlack"
@@ -105,9 +107,9 @@
 
         <TextView
             android:id="@+id/close"
-            android:layout_width="314dp"
+            android:layout_width="258dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="right"
             android:fontFamily="@font/monsemibold"
             android:text="Close:"
             android:textColor="@color/colorBlack"
@@ -121,9 +123,9 @@
 
         <TextView
             android:id="@+id/emcall"
-            android:layout_width="314dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:fontFamily="@font/monsemibold"
             android:text="Call center: 098-765-4321"
             android:textColor="@color/colorBlack"
