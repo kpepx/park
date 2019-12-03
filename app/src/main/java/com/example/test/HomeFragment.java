@@ -278,7 +278,6 @@ public class HomeFragment extends Fragment implements
 
             }
         });
-
             final Calendar currentTime = Calendar.getInstance();
 
         FIBO.addValueEventListener(new ValueEventListener() {
