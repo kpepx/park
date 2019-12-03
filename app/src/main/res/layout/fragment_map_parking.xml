@@ -9,50 +9,51 @@
 
     <ImageView
         android:id="@+id/status1"
-        android:layout_width="104dp"
-        android:layout_height="226dp"
+        android:layout_width="117dp"
+        android:layout_height="244dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.365" />
+        app:layout_constraintVertical_bias="0.328" />
 
     <ImageView
         android:id="@+id/status2"
-        android:layout_width="102dp"
-        android:layout_height="218dp"
+        android:layout_width="110dp"
+        android:layout_height="245dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.328" />
 
     <ImageView
         android:id="@+id/status3"
-        android:layout_width="104dp"
-        android:layout_height="220dp"
+        android:layout_width="115dp"
+        android:layout_height="251dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.358" />
+        app:layout_constraintVertical_bias="0.331" />
 
     <TextView
         android:id="@+id/namePark"
-        android:layout_width="222dp"
-        android:layout_height="52dp"
+        android:layout_width="193dp"
+        android:layout_height="61dp"
+        android:layout_gravity="center"
         android:fontFamily="@font/monsemibold"
         android:text="PARKING"
-        android:textSize="45dp"
-        android:layout_gravity="center"
         android:textColor="@color/colorBlack"
+        android:textSize="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.148" />
 
     <Button
         android:id="@+id/buttoninfo"
