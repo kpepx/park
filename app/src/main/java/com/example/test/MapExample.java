@@ -111,7 +111,6 @@ public class MapExample extends Fragment {
                                     image_3.setImageResource(R.drawable.notavaliable);
                                 }
                             }
-//                            else if(!car3.equals("1") && !car3.equals("0")){image_3.setImageResource(R.drawable.notavaliable);}}
                             else if (radio_color == 1) {
                                 if (car1.equals("1")) {
                                     image_1.setImageResource(R.drawable.green);
@@ -141,7 +140,6 @@ public class MapExample extends Fragment {
                                     image_3.setImageResource(R.drawable.notavaliable);
                                 }
                             }
-//                            else if(!car3.equals("1") && !car3.equals("0")){image_3.setImageResource(R.drawable.notavaliable);}}
                             else if (radio_color == 2) {
                                 if (car1.equals("1")) {
                                     image_1.setImageResource(R.drawable.red);
@@ -172,7 +170,6 @@ public class MapExample extends Fragment {
                                 }
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
