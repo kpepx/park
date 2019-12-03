@@ -123,7 +123,6 @@ public class HomeFragment extends Fragment implements
             mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.darkmode));
         }
 
-//
 //                 UiSettings uiset = googleMap.getUiSettings();
 //                 uiset.setZoomGesturesEnabled(true);
 //                 uiset.setMyLocationButtonEnabled(true)
