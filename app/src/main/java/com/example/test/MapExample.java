@@ -221,7 +221,7 @@ public class MapExample extends Fragment {
                     }
                 });
                 open_txt.setText("Open: "+dataSnapshot.child("open").child("hour").getValue()+":"+dataSnapshot.child("open").child("min").getValue()+" AM");
-                close_txt.setText("Close: "+dataSnapshot.child("close").child("hour").getValue()+":"+dataSnapshot.child("open").child("min").getValue()+" PM");
+                close_txt.setText("Close: "+dataSnapshot.child("close").child("hour").getValue()+":"+dataSnapshot.child("close").child("min").getValue()+" PM");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -248,7 +248,7 @@ public class MapExample extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map map = (Map) dataSnapshot.getValue();
                 open_txt.setText("Open: "+dataSnapshot.child("open").child("hour").getValue()+":"+dataSnapshot.child("open").child("min").getValue()+" AM");
-                close_txt.setText("Close: "+dataSnapshot.child("close").child("hour").getValue()+":"+dataSnapshot.child("open").child("min").getValue()+" PM");
+                close_txt.setText("Close: "+dataSnapshot.child("close").child("hour").getValue()+":"+dataSnapshot.child("close").child("min").getValue()+" PM");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
