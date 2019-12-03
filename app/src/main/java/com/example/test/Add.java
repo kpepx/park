@@ -34,12 +34,10 @@ public class Add extends Fragment {
                 if (isChecked) {
                     check1 = true;
 //                    myPrefs.edit().putBoolean("cb1",true).apply();
-                    Toast.makeText(getActivity().getApplication(), "cb1 ON", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     check1 = false;
 //                    myPrefs.edit().putBoolean("cb1",false).apply();
-                    Toast.makeText(getActivity().getApplication(), "cb1 OFF", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -52,11 +50,9 @@ public class Add extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     check2 = true;
-                    Toast.makeText(getActivity().getApplication(), "cb2 ON", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     check2 = false;
-                    Toast.makeText(getActivity().getApplication(), "cb2 OFF", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -69,11 +65,9 @@ public class Add extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     check3 = true;
-                    Toast.makeText(getActivity().getApplication(), "cb3 ON", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     check3 = false;
-                    Toast.makeText(getActivity().getApplication(), "cb3 OFF", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -28,7 +28,6 @@ public class MapParking extends Fragment {
     public DatabaseReference data;
     SharedPreferences myPrefs;
     Dialog myDialog;
-    Button buttonbackpark;
     public int value_place;
     TextView close_txt,slot_txt,available_txt,open_txt;
     @Nullable
@@ -48,8 +47,6 @@ public class MapParking extends Fragment {
                         new HomeFragment()).commit();
             }
         });
-
-
         new CountDownTimer(500, 1000) {
             public void onFinish() {
                 // When timer is finished
@@ -116,28 +113,28 @@ public class MapParking extends Fragment {
                         }
 //                            else if(!car3.equals("1") && !car3.equals("0")){image_3.setImageResource(R.drawable.notavaliable);}}
                         else if (radio_color == 1) {
-                            if (car1.equals("1")) {
+                            if (car1.equals("0")) {
                                 image_1.setImageResource(R.drawable.green);
                             }
-                            else if (car1.equals("0")) {
+                            else if (car1.equals("1")) {
                                 image_1.setImageResource(R.drawable.none);
                             }
                             else{
                                 image_1.setImageResource(R.drawable.notavaliable);
                             }
-                            if (car2.equals("1")) {
+                            if (car2.equals("0")) {
                                 image_2.setImageResource(R.drawable.green);
                             }
-                            else if (car2.equals("0")) {
+                            else if (car2.equals("1")) {
                                 image_2.setImageResource(R.drawable.none);
                             }
                             else{
                                 image_2.setImageResource(R.drawable.notavaliable);
                             }
-                            if (car3.equals("1")) {
+                            if (car3.equals("0")) {
                                 image_3.setImageResource(R.drawable.green);
                             }
-                            else if (car3.equals("0")) {
+                            else if (car3.equals("1")) {
                                 image_3.setImageResource(R.drawable.none);
                             }
                             else{

@@ -27,7 +27,6 @@ public class MapExample extends Fragment {
     public DatabaseReference data;
     SharedPreferences myPrefs;
     Dialog myDialog;
-    Button buttonbackpark;
     public String value_place;
     TextView close_txt,slot_txt,available_txt,open_txt;
     @Nullable

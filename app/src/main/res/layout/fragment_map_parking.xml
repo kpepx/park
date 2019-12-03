@@ -45,7 +45,6 @@
         android:layout_width="222dp"
         android:layout_height="52dp"
         android:fontFamily="@font/monsemibold"
-        android:text="PARKING"
         android:textSize="45dp"
         android:layout_gravity="center"
         android:textColor="@color/colorBlack"
