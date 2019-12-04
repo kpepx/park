@@ -226,17 +226,17 @@ public class HomeFragment extends Fragment implements
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot park : dataSnapshot.getChildren()) {
-                    if (park.toString().equals("1")) {
+                    if (park.getKey().equals("1")) {
                         Map map = (Map) park.child("close").getValue();
                         FIBO_value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
                         FIBO_value_min = Integer.parseInt(String.valueOf(map.get("min")));
                     }
-                    if (park.toString().equals("1")) {
+                    if (park.getKey().equals("1")) {
                         Map map = (Map) park.child("close").getValue();
                         CB_value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
                         CB_value_min = Integer.parseInt(String.valueOf(map.get("min")));
                     }
-                    if (park.toString().equals("1")) {
+                    if (park.getKey().equals("1")) {
                         Map map = (Map) park.child("close").getValue();
                         teacher_value_hour = Integer.parseInt(String.valueOf(map.get("hour")));
                         teacher_value_min = Integer.parseInt(String.valueOf(map.get("min")));
@@ -255,17 +255,17 @@ public class HomeFragment extends Fragment implements
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot park : dataSnapshot.getChildren()) {
-                    if (park.toString() == "1") {
+                    if (park.getKey().equals("1")) {
                         Map map = (Map) park.child("open").getValue();
                         FIBO_value_hour1 = Integer.parseInt(String.valueOf(map.get("hour")));
                         FIBO_value_min1 = Integer.parseInt(String.valueOf(map.get("min")));
                     }
-                    if (park.toString() == "1") {
+                    if (park.getKey().equals("1")) {
                         Map map = (Map) park.child("open").getValue();
                         CB_value_hour1 = Integer.parseInt(String.valueOf(map.get("hour")));
                         CB_value_min1 = Integer.parseInt(String.valueOf(map.get("min")));
                     }
-                    if (park.toString() == "1") {
+                    if (park.getKey().equals("1")) {
                         Map map = (Map) park.child("open").getValue();
                         teacher_value_hour1 = Integer.parseInt(String.valueOf(map.get("hour")));
                         teacher_value_min1 = Integer.parseInt(String.valueOf(map.get("min")));
@@ -310,7 +310,7 @@ public class HomeFragment extends Fragment implements
                                 icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                     }
                 }
-                if(currentTime.get(Calendar.HOUR_OF_DAY) == FIBO_value_hour && currentTime.get(Calendar.MINUTE)< FIBO_value_min) {
+                else if(currentTime.get(Calendar.HOUR_OF_DAY) == FIBO_value_hour && currentTime.get(Calendar.MINUTE)< FIBO_value_min) {
                     for (DataSnapshot carin : dataSnapshot.getChildren()) {
                         if (carin.getValue(int.class) == 0) {
                             count++;
@@ -333,7 +333,7 @@ public class HomeFragment extends Fragment implements
                                 icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                     }
                 }
-                if(currentTime.get(Calendar.HOUR_OF_DAY) == FIBO_value_hour1 && currentTime.get(Calendar.MINUTE) >= FIBO_value_min1){
+                else if(currentTime.get(Calendar.HOUR_OF_DAY) == FIBO_value_hour1 && currentTime.get(Calendar.MINUTE) >= FIBO_value_min1){
                     for (DataSnapshot carin : dataSnapshot.getChildren()) {
                         if (carin.getValue(int.class) == 0) {
                             count++;
@@ -404,7 +404,7 @@ public class HomeFragment extends Fragment implements
                                     icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                         }
                     }
-                    if(currentTime.get(Calendar.HOUR_OF_DAY)== teacher_value_hour && currentTime.get(Calendar.MINUTE)< teacher_value_min ){
+                    else if(currentTime.get(Calendar.HOUR_OF_DAY)== teacher_value_hour && currentTime.get(Calendar.MINUTE)< teacher_value_min ){
                         for (DataSnapshot carin : dataSnapshot.getChildren()) {
                             if (carin.getValue(int.class) == 0) {
                                 count2++;
@@ -430,7 +430,7 @@ public class HomeFragment extends Fragment implements
                                     icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                         }
                     }
-                    if(currentTime.get(Calendar.HOUR_OF_DAY)== teacher_value_hour1&& currentTime.get(Calendar.MINUTE) >= teacher_value_min1){
+                    else if(currentTime.get(Calendar.HOUR_OF_DAY)== teacher_value_hour1&& currentTime.get(Calendar.MINUTE) >= teacher_value_min1){
                         for (DataSnapshot carin : dataSnapshot.getChildren()) {
                             if (carin.getValue(int.class) == 0) {
                                 count2++;
@@ -501,7 +501,7 @@ public class HomeFragment extends Fragment implements
                                 icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                     }
                 }
-                if (currentTime.get(Calendar.HOUR_OF_DAY) == CB_value_hour && currentTime.get(Calendar.MINUTE) < CB_value_min) {
+                else if (currentTime.get(Calendar.HOUR_OF_DAY) == CB_value_hour && currentTime.get(Calendar.MINUTE) < CB_value_min) {
                             for (DataSnapshot carin : dataSnapshot.getChildren()) {
                                 if (carin.getValue(int.class) == 0) {
                                     count1++;
@@ -524,7 +524,7 @@ public class HomeFragment extends Fragment implements
                                         icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_green3)));
                             }
                         }
-                if (currentTime.get(Calendar.HOUR_OF_DAY) == CB_value_hour && currentTime.get(Calendar.MINUTE) > CB_value_min1) {
+                else if (currentTime.get(Calendar.HOUR_OF_DAY) == CB_value_hour && currentTime.get(Calendar.MINUTE) > CB_value_min1) {
                             for (DataSnapshot carin : dataSnapshot.getChildren()) {
                                 if (carin.getValue(int.class) == 0) {
                                     count1++;
