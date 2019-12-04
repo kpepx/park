@@ -22,6 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class MapParking extends Fragment {
@@ -52,6 +55,23 @@ public class MapParking extends Fragment {
                 // When timer is finished
                 // Execute your code here
             }
+             public boolean isTimeWith_in_Interval(String valueToCheck, String endTime, String startTime) {
+                boolean isBetween = false;
+                try {
+                    Date time1 = new SimpleDateFormat("HH:mm").parse(endTime);
+
+                    Date time2 = new SimpleDateFormat("HH:mm").parse(startTime);
+
+                    Date d = new SimpleDateFormat("HH:mm").parse(valueToCheck);
+
+                    if (time1.after(d) && time2.before(d)) {
+                        isBetween = true;
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return isBetween;
+            } // time ยังไม่set
 
             public void onTick(long millisUntilFinished) {
 
@@ -77,16 +97,6 @@ public class MapParking extends Fragment {
                 data.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        int count = 0;
-                        for (DataSnapshot carin : dataSnapshot.getChildren()) {
-                            if (carin.getValue(int.class) == 0) {
-                                count++;
-                            }
-                            carin.getKey();
-                        }
-                        if(count==0){
-                            showpopupfull(view);
-                        }
                         Map map = (Map) dataSnapshot.getValue();
                         String car1 = String.valueOf(map.get("car_1"));
                         String car2 = String.valueOf(map.get("car_2"));
