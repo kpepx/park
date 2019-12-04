@@ -38,13 +38,13 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626">
+        app:layout_constraintVertical_bias="0.689">
 
         <TextView
-            android:layout_width="213dp"
+            android:layout_width="203dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:fontFamily="@font/monsemibold"
@@ -59,53 +59,22 @@
             app:layout_constraintVertical_bias="0.089" />
 
         <TextView
-            android:layout_width="241dp"
+            android:layout_width="252dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:fontFamily="@font/alithin"
             android:text="Temporarily closed"
             android:textColor="@color/colorBlack"
-            android:textSize="22dp" />
+            android:textSize="24dp" />
+
         <TextView
-            android:layout_width="246dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
             android:layout_gravity="center"
             android:fontFamily="@font/alithin"
             android:text=" please try again next time"
             android:textColor="@color/colorBlack"
-            android:textSize="22dp" />
-
-        <TextView
-            android:id="@+id/open"
-            android:layout_width="205dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:fontFamily="@font/monsemibold"
-            android:text="Open:"
-            android:textColor="@color/colorBlack"
-            android:textSize="22dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.186"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.584" />
-
-        <TextView
-            android:id="@+id/close"
-            android:layout_width="205dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:fontFamily="@font/monsemibold"
-            android:text="Close:"
-            android:textColor="@color/colorBlack"
-            android:textSize="22dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.186"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.47" />
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/emcall"
